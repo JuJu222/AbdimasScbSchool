@@ -10,12 +10,40 @@
 </head>
 <body>
     @include('layout.navigation_layout')
-    <div class="container">
-        <h1>Welcome</h1>
-
-       
-
+    
+    <div class="bg-dark" style="height:300px">
+        <div class="container text-white">
+            <h1 class="pt-5 text-center">Welcome</h1>
+        </div>
     </div>
+
+    <div class="row container mt-3">
+        <div class="col">
+            
+        </div>
+        <div class="col">
+            <h1>Selamat Datang!</h1>
+            <p>Website ini berisi informasi Pemeliharaan dan Perawatan Fasilitas Gedung Sekolah Citra Berkat Citraland. Website ini dapat melakukan perencanaan, pelaksanaan, monitoring, dan evaluasi kegiatan Pemeliharaan dan Perawatan Fasilitas Gedung SCB Citraland agar fasilitas yang ada dapat terjaga dengan baik serta mengurangi biaya perbaikan yang tidak direncanakan.</p>
+
+        </div>
+        
+    </div>
+
+    <div class="bg-dark text-white text-center" style="height:70px; padding-top:8px">
+        <h1>KLASIFIKASI PEMELIHARAAN DAN PERAWATAN SEKOLAH</h1>
+    </div>
+
+    <div class="row container">
+        <div class="col">
+            
+        </div>
+
+        <div class="col">
+            <h1>PEMELIHARAAN</h1>
+        </div>
+    </div>
+
+
     
 </body>
 </html>
