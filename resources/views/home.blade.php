@@ -29,8 +29,8 @@
         
     </div>
 
-    <div class="bg-dark text-white text-center" style="height:70px; padding-top:8px">
-        <h1>KLASIFIKASI PEMELIHARAAN DAN PERAWATAN SEKOLAH</h1>
+    <div class="bg-dark text-white text-center" style="height:70px; padding-top:15px">
+        <h2>KLASIFIKASI PEMELIHARAAN DAN PERAWATAN SEKOLAH</h2>
     </div>
 
     <div class="row container mt-3">
