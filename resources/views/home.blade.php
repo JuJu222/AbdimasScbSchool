@@ -33,13 +33,26 @@
         <h1>KLASIFIKASI PEMELIHARAAN DAN PERAWATAN SEKOLAH</h1>
     </div>
 
-    <div class="row container">
+    <div class="row container mt-3">
         <div class="col">
             
         </div>
 
         <div class="col">
             <h1>PEMELIHARAAN</h1>
+            <p>AC, Panel Listrik,  Lampu, Arrester, Eksterior/Interior Gedung, Hydrant, Torent, Genset, Alarm, Pest Control, Landscape, dan Pembersihan Selokan</p>
+        </div>
+    </div>
+
+    <div class="row container mt-3">
+        <div class="col">
+
+        </div>
+       
+
+        <div class="col mt-3">
+            <h1>PERAWATAN</h1>
+            <p>Pengecatan Gedung Berkala, Pengecatan Lapangan Basket, Perbaikan Kebocoran, Perbaikan Keramik Gedung, Renovasi Gedung, dan Pembangunan Fasilitas Tambahan</p>
         </div>
     </div>
 

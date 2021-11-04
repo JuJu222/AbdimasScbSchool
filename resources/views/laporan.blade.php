@@ -9,6 +9,34 @@
 </head>
 <body>
     @include('layout.navigation_layout')
-    <h1>Laporan</h1>
+    <div class="bg-dark" style="height:300px">
+        <div class="container text-white">
+            <h1 class="pt-5 text-center">Laporan</h1>
+        </div>
+    </div>
+
+    <div class="row container mt-3">
+        <div class="col">
+            
+        </div>
+
+        <div class="col">
+            <h1>Laporan Pemeliharaan Gedung</h1>
+            <p>Berisi Hasil Laporan Pelaksanaan Pemeliharaan Gedung Sekolah selama 1 Periode</p>
+            <a class="btn btn-primary" href="#" role="button">Selengkapnya</a>
+        </div>
+    </div>
+
+    <div class="row container mt-3">
+        <div class="col">
+
+        </div>
+
+        <div class="col mt-3">
+            <h1>Maintenance Perawatan</h1>
+            <p>Berisi Hasil Laporan Pelaksanaan Perawatan Gedung Sekolah selama 1 Periode</p>
+            <a class="btn btn-primary" href="#" role="button">Selengkapnya</a>
+        </div>
+    </div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-blue">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand " href="#">
             <img src="img/scb_logo.png" alt="" width="238" height="37">Sekolah Citra Berkat Surabaya</a>
