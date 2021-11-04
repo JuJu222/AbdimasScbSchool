@@ -15,28 +15,27 @@
         </div>
     </div>
 
-    <div class="row container mt-3">
-        <div class="col">
-            
+    <div class="row container mt-3 d-flex justify-content-center">
+        <div class="col-sm-5 float-end">
+            <img src="img/img_pemeliharaan.jpg" alt="" width="320px" height="240px">
         </div>
 
-        <div class="col">
+        <div class="col-sm-5">
             <h1>Laporan Pemeliharaan Gedung</h1>
             <p>Berisi Hasil Laporan Pelaksanaan Pemeliharaan Gedung Sekolah selama 1 Periode</p>
             <a class="btn btn-primary" href="#" role="button">Selengkapnya</a>
         </div>
-    </div>
 
-    <div class="row container mt-3">
-        <div class="col">
-
+        <div class="col-sm-5">
+            <img src="img/img_perawatan.jpg" alt="" width="320px" height="240px">
         </div>
 
-        <div class="col mt-3">
-            <h1>Maintenance Perawatan</h1>
-            <p>Berisi Hasil Laporan Pelaksanaan Perawatan Gedung Sekolah selama 1 Periode</p>
+        <div class="col-sm-5 mt-3">
+            <h1>Maintenance Perawatan Gedung</h1>
+            <p>Berisi Hasil Laporan Pelaksanaan Perawatan Gedung Sekolah selama 1 Periode </p>
             <a class="btn btn-primary" href="#" role="button">Selengkapnya</a>
         </div>
+
     </div>
 </body>
 </html>

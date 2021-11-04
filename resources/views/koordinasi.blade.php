@@ -9,6 +9,11 @@
 </head>
 <body>
     @include('layout.navigation_layout')
-    <h1>Jadwal Koordinasi</h1>
+    <div class="bg-dark" style="height:300px">
+        <div class="container text-white">
+            <h1 class="pt-5 text-center">Jadwal Koordinasi</h1>
+        </div>
+    </div>
+    
 </body>
 </html>
