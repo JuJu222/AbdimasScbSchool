@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\CurrativeMaintenanceController;
+use App\Http\Controllers\EquipmentController;
+use App\Http\Controllers\PreventiveMaintenanceController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +28,14 @@ Route::get('/maintenance', function () {
         'title' => 'maintenance'
     ]);
 });
+
+Route::resource('equipments', EquipmentController::class);
+
+Route::resource('projects', ProjectController::class);
+
+Route::resource('pemeliharaan', PreventiveMaintenanceController::class);
+
+Route::resource('perawatan', CurrativeMaintenanceController::class);
 
 Route::get('/laporan', function () {
     return view('laporan', [
