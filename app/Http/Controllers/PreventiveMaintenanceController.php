@@ -37,6 +37,25 @@ class PreventiveMaintenanceController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function createWithData($id)
+    {
+        $title = 'maintenance';
+
+        $equipment_id = $id;
+        $equipments = Equipment::all();
+        $preventiveMaintenances = PreventiveMaintenance::where('equipment_id', $id)
+            ->where('equipment_id', $id)
+            ->get();
+
+        return view('pemeliharaan_create', compact('title', 'equipment_id', 'equipments', 'preventiveMaintenances'));
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

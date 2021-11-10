@@ -30,7 +30,33 @@
                     <td>{{ $loop->index + 1 }}</td>
                     <td>{{ $item->equipment->nama_equipment }}</td>
                     <td>{{ $item->year }}</td>
-                    <td>{{ $item->month }}</td>
+                    <td>
+                        @if ($item->month === 1)
+                            Januari
+                        @elseif ($item->month === 2)
+                            Februari
+                        @elseif ($item->month === 3)
+                            Maret
+                        @elseif ($item->month === 4)
+                            April
+                        @elseif ($item->month === 5)
+                            Mei
+                        @elseif ($item->month === 6)
+                            Juni
+                        @elseif ($item->month === 7)
+                            Juli
+                        @elseif ($item->month === 8)
+                            Agustus
+                        @elseif ($item->month === 9)
+                            September
+                        @elseif ($item->month === 10)
+                            Oktober
+                        @elseif ($item->month === 11)
+                            November
+                        @elseif ($item->month === 12)
+                            Desember
+                        @endif
+                    </td>
                     <td>{{ $item->week }}</td>
                     <td>{{ $item->status }}</td>
                     <td>
@@ -44,7 +70,7 @@
                 </tr>
             @endforeach
         </table>
-        <a href="{{ route('pemeliharaan.create') }}" class="btn btn-primary mt-3 mb-5">Add Preventive Maintenance</a>
+        <a href="pemeliharaan/create/1" class="btn btn-primary mt-3 mb-5">Add Preventive Maintenance</a>
     </div>
 </body>
 </html>

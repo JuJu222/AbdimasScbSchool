@@ -33,6 +33,7 @@ Route::resource('equipments', EquipmentController::class);
 
 Route::resource('projects', ProjectController::class);
 
+Route::get('pemeliharaan/create/{equipment}', [PreventiveMaintenanceController::class, 'createWithData']);
 Route::resource('pemeliharaan', PreventiveMaintenanceController::class);
 
 Route::resource('perawatan', CurrativeMaintenanceController::class);
