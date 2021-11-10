@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <title>Maintenance - SCB Surabaya</title>
 </head>
 <body>
@@ -19,7 +20,7 @@
             @csrf
             <div class="form-group">
                 <label>Nama Equipment</label>
-                <select name="equipment_id" class="form-select" onchange="top.location.href = this.options[this.selectedIndex].value">
+                <select name="equipment_id" class="form-select" id="equipment_id">
                     @foreach($equipments as $item)
                         @if ($item->equipment_id == $equipment_id)
                             <option value="{{ $item->equipment_id }}" selected>{{ $item->nama_equipment }}</option>
@@ -31,13 +32,14 @@
             </div>
             <div class="form-group">
                 <label>Tahun</label>
-                <select name="year" class="form-select">
-                    <option value="2020">2020</option>
-                    <option value="2021">2021</option>
-                    <option value="2022">2022</option>
-                    <option value="2023">2023</option>
-                    <option value="2024">2024</option>
-                    <option value="2025">2025</option>
+                <select name="year" class="form-select" id="year">
+                    @for ($i = 2020; $i < 2030; $i++)
+                        @if ($i == $year)
+                            <option value="{{ $i }}" selected>{{ $i }}</option>
+                        @else
+                            <option value="{{ $i }}">{{ $i }}</option>
+                        @endif
+                    @endfor
                 </select>
             </div>
             <div class="form-group">
@@ -98,5 +100,13 @@
             </div>
         @endif
     </div>
+    <script>
+        $('#equipment_id, #year').on('change', function (e) {
+            let equipment_id = $("#equipment_id").val();
+            let year = $("#year").val();
+
+            location.href = '/pemeliharaan/create/' + equipment_id + '/' + year;
+        });
+    </script>
 </body>
 </html>

@@ -42,7 +42,7 @@ class PreventiveMaintenanceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function createWithData($id)
+    public function createWithData($id, $year)
     {
         $title = 'maintenance';
 
@@ -50,9 +50,10 @@ class PreventiveMaintenanceController extends Controller
         $equipments = Equipment::all();
         $preventiveMaintenances = PreventiveMaintenance::where('equipment_id', $id)
             ->where('equipment_id', $id)
+            ->where('year', $year)
             ->get();
 
-        return view('pemeliharaan_create', compact('title', 'equipment_id', 'equipments', 'preventiveMaintenances'));
+        return view('pemeliharaan_create', compact('title', 'equipment_id', 'year', 'equipments', 'preventiveMaintenances'));
     }
 
     /**

@@ -70,7 +70,7 @@
                 </tr>
             @endforeach
         </table>
-        <a href="pemeliharaan/create/1" class="btn btn-primary mt-3 mb-5">Add Preventive Maintenance</a>
+        <a href="pemeliharaan/create/1/2020" class="btn btn-primary mt-3 mb-5">Add Preventive Maintenance</a>
     </div>
 </body>
 </html>
