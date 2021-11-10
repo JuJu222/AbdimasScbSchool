@@ -17,7 +17,11 @@ class PreventiveMaintenanceController extends Controller
     {
         $title = 'maintenance';
 
-        $preventiveMaintenances = PreventiveMaintenance::all();
+        $preventiveMaintenances = PreventiveMaintenance::orderBy('equipment_id')
+            ->orderBy('year')
+            ->orderBy('month')
+            ->orderBy('week')
+            ->get();
 
         return view('pemeliharaan', compact('title', 'preventiveMaintenances'));
     }

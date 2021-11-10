@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\CurrativeMaintenance;
-use App\Models\PreventiveMaintenance;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -18,7 +17,11 @@ class CurrativeMaintenanceController extends Controller
     {
         $title = 'maintenance';
 
-        $currativeMaintenances = CurrativeMaintenance::all();
+        $currativeMaintenances = CurrativeMaintenance::orderBy('project_id')
+            ->orderBy('year')
+            ->orderBy('month')
+            ->orderBy('week')
+            ->get();
 
         return view('perawatan', compact('title', 'currativeMaintenances'));
     }
