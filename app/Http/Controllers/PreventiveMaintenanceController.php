@@ -44,20 +44,36 @@ class PreventiveMaintenanceController extends Controller
      */
     public function store(Request $request)
     {
-        //        $this->validate($request, [
+//        $this->validate($request, [
 //            'name' => 'required|unique:courses|min:3',
 //            'lecturer' => 'required',
 //            'sks' => 'required',
 //            'description' => 'required'
 //        ]);
 
-        PreventiveMaintenance::create([
-            'equipment_id' => $request->equipment_id,
-            'year' => $request->year,
-            'month' => $request->month,
-            'week' => $request->week,
-            'status' => 'Belum',
-        ]);
+        for ($i = 1; $i <= 12; $i++) {
+            for ($j = 1; $j <= 4; $j++) {
+                $name = $i . '_' . $j;
+
+                if ($request->$name) {
+                    $preventiveMaintenance = PreventiveMaintenance::where('equipment_id', $request->equipment_id)
+                        ->where('year', $request->year)
+                        ->where('month', $i)
+                        ->where('week', $j)
+                        ->first();
+
+                    if (!$preventiveMaintenance) {
+                        PreventiveMaintenance::create([
+                            'equipment_id' => $request->equipment_id,
+                            'year' => $request->year,
+                            'month' => $i,
+                            'week' => $j,
+                            'status' => 'Belum',
+                        ]);
+                    }
+                }
+            }
+        }
 
         return redirect(route('pemeliharaan.index'));
     }
@@ -104,6 +120,9 @@ class PreventiveMaintenanceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $preventiveMaintenance = PreventiveMaintenance::findOrFail($id);
+        $preventiveMaintenance->delete();
+
+        return redirect(route('pemeliharaan.index'));
     }
 }
