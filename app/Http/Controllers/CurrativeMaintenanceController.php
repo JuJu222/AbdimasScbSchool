@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CurrativeMaintenance;
 use App\Models\PreventiveMaintenance;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class CurrativeMaintenanceController extends Controller
@@ -19,7 +20,7 @@ class CurrativeMaintenanceController extends Controller
 
         $currativeMaintenances = CurrativeMaintenance::all();
 
-        return view('maintenance_perawatan', compact('title', 'currativeMaintenances'));
+        return view('perawatan', compact('title', 'currativeMaintenances'));
     }
 
     /**
@@ -29,7 +30,11 @@ class CurrativeMaintenanceController extends Controller
      */
     public function create()
     {
-        //
+        $title = 'maintenance';
+
+        $projects = Project::all();
+
+        return view('perawatan_create', compact('title', 'projects'));
     }
 
     /**
@@ -40,7 +45,22 @@ class CurrativeMaintenanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //        $this->validate($request, [
+//            'name' => 'required|unique:courses|min:3',
+//            'lecturer' => 'required',
+//            'sks' => 'required',
+//            'description' => 'required'
+//        ]);
+
+        CurrativeMaintenance::create([
+            'project_id' => $request->project_id,
+            'year' => $request->year,
+            'month' => $request->month,
+            'week' => $request->week,
+            'status' => 'Belum',
+        ]);
+
+        return redirect(route('perawatan.index'));
     }
 
     /**

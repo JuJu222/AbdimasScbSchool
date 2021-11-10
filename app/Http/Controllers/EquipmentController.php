@@ -39,7 +39,22 @@ class EquipmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//        $this->validate($request, [
+//            'name' => 'required|unique:courses|min:3',
+//            'lecturer' => 'required',
+//            'sks' => 'required',
+//            'description' => 'required'
+//        ]);
+
+//        Equipment::create([
+//            'code' => $code,
+//            'name' => $request->name,
+//            'lecturer' => $request->lecturer,
+//            'sks' => $request->sks,
+//            'description' => $request->description
+//        ]);
+//
+//        return redirect(route('courses.index'));
     }
 
     /**

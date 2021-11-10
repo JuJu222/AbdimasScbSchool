@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Equipment;
 use App\Models\PreventiveMaintenance;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,7 @@ class PreventiveMaintenanceController extends Controller
 
         $preventiveMaintenances = PreventiveMaintenance::all();
 
-        return view('maintenance_pemeliharaan', compact('title', 'preventiveMaintenances'));
+        return view('pemeliharaan', compact('title', 'preventiveMaintenances'));
     }
 
     /**
@@ -28,7 +29,11 @@ class PreventiveMaintenanceController extends Controller
      */
     public function create()
     {
-        //
+        $title = 'maintenance';
+
+        $equipments = Equipment::all();
+
+        return view('pemeliharaan_create', compact('title', 'equipments'));
     }
 
     /**
@@ -39,7 +44,22 @@ class PreventiveMaintenanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //        $this->validate($request, [
+//            'name' => 'required|unique:courses|min:3',
+//            'lecturer' => 'required',
+//            'sks' => 'required',
+//            'description' => 'required'
+//        ]);
+
+        PreventiveMaintenance::create([
+            'equipment_id' => $request->equipment_id,
+            'year' => $request->year,
+            'month' => $request->month,
+            'week' => $request->week,
+            'status' => 'Belum',
+        ]);
+
+        return redirect(route('pemeliharaan.index'));
     }
 
     /**
