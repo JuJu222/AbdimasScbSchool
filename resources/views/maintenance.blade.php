@@ -15,7 +15,7 @@
         <div class="col-sm-5 mt-3 pt-3 pb-3">
             <h1>Maintenance Pemeliharaan</h1>
             <p>Berisi Timeline Perencanaan, Penambahan Equipment hingga Melihat Hasil dari Pemeliharaan Gedung Sekolah selama 1 Periode </p>
-            <a class="btn btn-primary" href="#" role="button">Selengkapnya</a>
+            <a class="btn btn-primary" href="{{ route('pemeliharaan.index') }}" role="button">Selengkapnya</a>
         </div>
 
         <div class="col-sm-5 mt-3 mb-3">
@@ -25,12 +25,12 @@
         <div class="col-sm-5 mt-3 pt-3 pb-3">
             <h1>Maintenance Pemeliharaan</h1>
             <p>Berisi Timeline Perencanaan, Penambahan Equipment hingga Melihat Hasil dari Pemeliharaan Gedung Sekolah selama 1 Periode </p>
-            <a class="btn btn-primary" href="#" role="button">Selengkapnya</a>
+            <a class="btn btn-primary" href="{{ route('perawatan.index') }}" role="button">Selengkapnya</a>
         </div>
 
-        
 
-        
+
+
 
 
     </div>
@@ -46,5 +46,4 @@
             <a class="btn btn-primary" href="#" role="button">Selengkapnya</a>
         </div>
     </div> --}}
-
-    @endsection
+ @endsection
