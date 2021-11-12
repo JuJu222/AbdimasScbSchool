@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+@extends('layout.main_layout')
 
-    <title>Home - SCB Surabaya</title>
-</head>
-<body>
-    @include('layout.navigation_layout')
-    
+@section('main_content')
     <div class="bg-dark" style="height:300px">
         <div class="container text-white">
             <h1 class="pt-5 text-center">Welcome</h1>
@@ -57,6 +47,4 @@
     </div>
 
 
-    
-</body>
-</html>
+@endsection
