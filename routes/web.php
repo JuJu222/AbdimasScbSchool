@@ -49,3 +49,10 @@ Route::get('/koordinasi', function () {
         'title' => 'jadwal_koordinasi'
     ]);
 });
+
+//TODO tmabah keterangan, biaya, dan quantity di table maintenance
+//TODO tambah sekolah
+//TODO hilangkan halaman laporan
+//TODO tambah kolom realisasi start end di table
+//TODO tambah filter ke table
+//TODO tambah fitur user
