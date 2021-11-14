@@ -1,7 +1,10 @@
 @extends('layout.main_layout')
 
 @section('main_content')
-    <div class="bg-dark" style="height:300px">
+    <div class="has-bg-img bg-dark" style="height:300px">
+        {{-- <img src="img/img_pemeliharaan.jpg" class="bg-img" style="height: 300px"> --}}
+        
+        
         <div class="container text-white">
             <h1 class="pt-5 text-center">Maintenance</h1>
         </div>
