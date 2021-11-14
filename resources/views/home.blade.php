@@ -19,7 +19,7 @@
         
     </div>
 
-    <div class="bg-dark text-white text-center" style="height:70px; padding-top:14px">
+    <div class="bg-dark text-white text-center" style="height:70px; padding-top:14px; background-color: rgb(7, 0, 132);">
         <h2>KLASIFIKASI PEMELIHARAAN DAN PERAWATAN SEKOLAH</h2>
     </div>
 

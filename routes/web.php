@@ -19,15 +19,15 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/maintenance', function () {
-    return view('maintenance', [
-        'title' => 'maintenance'
+Route::get('/pemeliharaan', function () {
+    return view('pemeliharaan', [
+        'title' => 'pemeliharaan'
     ]);
 });
 
-Route::get('/laporan', function () {
-    return view('laporan', [
-        'title' => 'laporan'
+Route::get('/perawatan', function () {
+    return view('perawatan', [
+        'title' => 'perawatan'
     ]);
 });
 

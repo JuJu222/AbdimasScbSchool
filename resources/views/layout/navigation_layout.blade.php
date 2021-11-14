@@ -13,13 +13,13 @@
 
               <li class="nav-item">
               <a class="nav-link
-              @if ($title =='maintenance') active @endif" href="/maintenance">Maintenance</a>
+              @if ($title =='pemeliharaan') active @endif" href="/pemeliharaan">Pemeliharaan</a>
               </li>
 
 
               <li class="nav-item">
               <a class="nav-link
-              @if ($title =='laporan') active @endif" href="/laporan">Laporan</a>
+              @if ($title =='perawatan') active @endif" href="/perawatan">Perawatan</a>
               </li>
 
               <li class="nav-item">
