@@ -6,7 +6,7 @@
         
         
         <div class="container text-white">
-            <h1 class="pt-5 text-center">Maintenance</h1>
+            <h1 class="pt-5 text-center">Pemeliharaan</h1>
         </div>
     </div>
 
