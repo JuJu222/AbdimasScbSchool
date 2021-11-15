@@ -1,9 +1,5 @@
 <?php
 
-use App\Http\Controllers\CurrativeMaintenanceController;
-use App\Http\Controllers\EquipmentController;
-use App\Http\Controllers\PreventiveMaintenanceController;
-use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,9 +19,15 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/maintenance', function () {
-    return view('maintenance', [
-        'title' => 'maintenance'
+Route::get('/pemeliharaan', function () {
+    return view('pemeliharaan', [
+        'title' => 'pemeliharaan'
+    ]);
+});
+
+Route::get('/perawatan', function () {
+    return view('perawatan', [
+        'title' => 'perawatan'
     ]);
 });
 
@@ -37,12 +39,6 @@ Route::get('pemeliharaan/create/{equipment}/{year}', [PreventiveMaintenanceContr
 Route::resource('pemeliharaan', PreventiveMaintenanceController::class);
 
 Route::resource('perawatan', CurrativeMaintenanceController::class);
-
-Route::get('/laporan', function () {
-    return view('laporan', [
-        'title' => 'laporan'
-    ]);
-});
 
 Route::get('/koordinasi', function () {
     return view('koordinasi', [

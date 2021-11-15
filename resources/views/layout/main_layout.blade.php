@@ -24,7 +24,7 @@
 
     <footer style="margin-top: 100px">
         <div id="sticky-footer"class="justify-content-center fixed-bottom text-center p-3 text-light" style="background-color: rgb(7, 0, 132);">
-            Copyright 2021 | Citra Berkat School Surabaya
+            © 2021 | Citra Berkat School Surabaya
         </div>
     </footer>
 
