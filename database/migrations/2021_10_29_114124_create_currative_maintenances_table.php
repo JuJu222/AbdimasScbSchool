@@ -16,9 +16,15 @@ class CreateCurrativeMaintenancesTable extends Migration
         Schema::create('currative_maintenances', function (Blueprint $table) {
             $table->id('currative_maintenance_id');
             $table->foreignId('project_id');
-            $table->integer('year');
-            $table->tinyInteger('month');
-            $table->tinyInteger('week');
+            $table->string('quantity')->nullable();
+            $table->string('biaya')->nullable();
+            $table->integer('year_plan');
+            $table->tinyInteger('month_plan');
+            $table->tinyInteger('week_plan');
+            $table->integer('year_real');
+            $table->tinyInteger('month_real');
+            $table->tinyInteger('week_real');
+            $table->string('keterangan')->nullable();
             $table->string('status');
             $table->timestamps();
 

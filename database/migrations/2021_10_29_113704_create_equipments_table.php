@@ -16,9 +16,6 @@ class CreateEquipmentsTable extends Migration
         Schema::create('equipments', function (Blueprint $table) {
             $table->id('equipment_id');
             $table->string('nama_equipment');
-            $table->string('quantity')->nullable();
-            $table->string('biaya')->nullable();
-            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }
