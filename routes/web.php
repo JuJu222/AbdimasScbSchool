@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\CurrativeMaintenanceController;
+use App\Http\Controllers\EquipmentController;
+use App\Http\Controllers\PreventiveMaintenanceController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*

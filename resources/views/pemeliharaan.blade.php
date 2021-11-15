@@ -10,34 +10,7 @@
         </div>
     </div>
 
-    <div class="row container mt-3 d-flex justify-content-center">
-        <div class="col-sm-5 mt-3 mb-3">
-            <img src="img/img_pemeliharaan.jpg" alt="" width="320px" height="240px">
-        </div>
-
-        <div class="col-sm-5 mt-3 pt-3 pb-3">
-            <h1>Maintenance Pemeliharaan</h1>
-            <p>Berisi Timeline Perencanaan, Penambahan Equipment hingga Melihat Hasil dari Pemeliharaan Gedung Sekolah selama 1 Periode </p>
-            <a class="btn btn-primary" href="{{ route('pemeliharaan.index') }}" role="button">Selengkapnya</a>
-        </div>
-
-        <div class="col-sm-5 mt-3 mb-3">
-            <img src="img/img_perawatan.jpg" alt="" width="320px" height="240px">
-        </div>
-
-        <div class="col-sm-5 mt-3 pt-3 pb-3">
-            <h1>Maintenance Pemeliharaan</h1>
-            <p>Berisi Timeline Perencanaan, Penambahan Equipment hingga Melihat Hasil dari Pemeliharaan Gedung Sekolah selama 1 Periode </p>
-            <a class="btn btn-primary" href="{{ route('perawatan.index') }}" role="button">Selengkapnya</a>
-        </div>
-
-
-
-
-
-
-    </div>
-    <div class="container">
+    <div class="container mt-3">
         <link href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css" rel="stylesheet">
 
         <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
