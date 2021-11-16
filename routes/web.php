@@ -19,6 +19,17 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/login', function () {
+    return view('/user/login', [
+        'title' => 'login'
+    ]);
+});
+
+Route::get('/register', function () {
+    return view('/user/register', [
+        'title' => 'register'
+    ]);
+});
 
 
 Route::get('/pemeliharaan', function () {

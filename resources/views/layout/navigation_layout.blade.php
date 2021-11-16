@@ -5,7 +5,7 @@
           {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button> --}}
-            <ul class="nav navbar-nav nav-pills navbar-right ">
+            <ul class="nav navbar-nav nav-pills navbar-right text-light ">
               <li class="nav-item">
                 <a class="nav-link 
                 @if ($title =='home') active @endif" href="/">Home</a>
@@ -25,6 +25,14 @@
               <li class="nav-item">
               <a class="nav-link
               @if ($title =='jadwal_koordinasi') active @endif" href="/koordinasi">Jadwal Koordinasi</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="btn btn-warning text fw-bold" href="/login">LOGIN</a>
+                </li>
+
+              <li class="nav-item">
+                <a class="btn btn-danger" href="/register">REGISTER</a>
               </li>
             </ul>
           
