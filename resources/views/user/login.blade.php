@@ -138,13 +138,13 @@
                                 <button type="submit" class="btn btn-default text-uppercase">Login</button>
                             </div> 
 
-                            <div class="text-center">
+                            {{-- <div class="text-center">
                                 <a href="#" class="forget-link">Forget Password?</a>
-                            </div>
+                            </div> --}}
 
                             <div class="text-center mb-2">
                                 Belum punya akun?
-                                <a href="#" class="register-link">
+                                <a href="/register" class="register-link">
                                     Registrasi Disini!
                                 </a>
                             </div>
