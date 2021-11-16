@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-light navbar-inverse bg-light">
-        <div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-light navbar-inverse bg-light py-3 fixed-top">
+        <div class="container">
           <a class="navbar-brand " href="#">
-            <img src="img/scb_logo.png" alt="" width="238" height="37">Sekolah Citra Berkat Surabaya</a>
+            <img src="img/scb_logo.png" alt="" width="238" height="37"></a>
           {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button> --}}

@@ -14,10 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home', [
+    return view('newhome', [
         'title' => 'home'
     ]);
 });
+
+
 
 Route::get('/pemeliharaan', function () {
     return view('pemeliharaan', [
@@ -36,3 +38,4 @@ Route::get('/koordinasi', function () {
         'title' => 'jadwal_koordinasi'
     ]);
 });
+
