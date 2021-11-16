@@ -35,7 +35,7 @@ class Equipment extends Model
 
     protected $table = 'equipments';
     protected $primaryKey = 'equipment_id';
-    protected $fillable = ['nama_equipment', 'quantity', 'biaya', 'keterangan'];
+    protected $fillable = ['nama_equipment'];
 
     public function preventiveMaintenance() {
         return $this->hasMany(PreventiveMaintenance::class, 'equipment_id', 'equipment_id');

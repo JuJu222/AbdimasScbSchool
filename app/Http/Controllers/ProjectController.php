@@ -19,7 +19,7 @@ class ProjectController extends Controller
 
         $projects = Project::all();
 
-        return view('project', compact('title', 'projects'));
+        return view('projects', compact('title', 'projects'));
     }
 
     /**
@@ -29,7 +29,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        $title = 'project';
+
+        return view('projects_create', compact('title'));
     }
 
     /**
@@ -40,7 +42,18 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//        $this->validate($request, [
+//            'name' => 'required|unique:courses|min:3',
+//            'lecturer' => 'required',
+//            'sks' => 'required',
+//            'description' => 'required'
+//        ]);
+
+        Project::create([
+            'jenis_project' => $request->jenis_project
+        ]);
+
+        return redirect(route('projects.index'));
     }
 
     /**
@@ -62,7 +75,11 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $title = 'project';
+
+        $project = Project::findOrFail($id);
+
+        return view('projects_edit', compact('title', 'project'));
     }
 
     /**
@@ -74,7 +91,20 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+//        $this->validate($request, [
+//            'name' => 'required|min:3',
+//            'lecturer' => 'required',
+//            'sks' => 'required',
+//            'description' => 'required'
+//        ]);
+
+        $project = Project::findOrFail($id);
+
+        $project->update([
+            'jenis_project' => $request->jenis_project,
+        ]);
+
+        return redirect(route('projects.index'));
     }
 
     /**
@@ -85,6 +115,9 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $project = Project::findOrFail($id);
+        $project->delete();
+
+        return redirect(route('projects.index'));
     }
 }

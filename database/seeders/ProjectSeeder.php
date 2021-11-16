@@ -16,9 +16,6 @@ class ProjectSeeder extends Seeder
     {
         DB::table('projects')->insert([
             'jenis_project' => 'Pembuatan batas kelas lantai 1 gedung D',
-            'quantity' => '1',
-            'biaya' => '8000000',
-            'keterangan' => null,
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);

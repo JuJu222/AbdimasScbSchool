@@ -18,7 +18,7 @@ class EquipmentController extends Controller
 
         $equipments = Equipment::all();
 
-        return view('equipment', compact('title', 'equipments'));
+        return view('equipments', compact('title', 'equipments'));
     }
 
     /**
@@ -28,7 +28,9 @@ class EquipmentController extends Controller
      */
     public function create()
     {
-        //
+        $title = 'equipment';
+
+        return view('equipments_create', compact('title'));
     }
 
     /**
@@ -46,15 +48,11 @@ class EquipmentController extends Controller
 //            'description' => 'required'
 //        ]);
 
-//        Equipment::create([
-//            'code' => $code,
-//            'name' => $request->name,
-//            'lecturer' => $request->lecturer,
-//            'sks' => $request->sks,
-//            'description' => $request->description
-//        ]);
-//
-//        return redirect(route('courses.index'));
+        Equipment::create([
+            'nama_equipment' => $request->nama_equipment
+        ]);
+
+        return redirect(route('equipments.index'));
     }
 
     /**
@@ -76,7 +74,11 @@ class EquipmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $title = 'equipment';
+
+        $equipment = Equipment::findOrFail($id);
+
+        return view('equipments_edit', compact('title', 'equipment'));
     }
 
     /**
@@ -88,7 +90,20 @@ class EquipmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+//        $this->validate($request, [
+//            'name' => 'required|min:3',
+//            'lecturer' => 'required',
+//            'sks' => 'required',
+//            'description' => 'required'
+//        ]);
+
+        $equipment = Equipment::findOrFail($id);
+
+        $equipment->update([
+            'nama_equipment' => $request->nama_equipment,
+        ]);
+
+        return redirect(route('equipments.index'));
     }
 
     /**
@@ -99,6 +114,9 @@ class EquipmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $equipment = Equipment::findOrFail($id);
+        $equipment->delete();
+
+        return redirect(route('equipments.index'));
     }
 }
