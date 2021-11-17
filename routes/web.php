@@ -18,10 +18,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home', [
+    return view('newhome', [
         'title' => 'home'
     ]);
 });
+
+Route::get('/login', function () {
+    return view('/user/login', [
+        'title' => 'login'
+    ]);
+});
+
+Route::get('/register', function () {
+    return view('/user/register', [
+        'title' => 'register'
+    ]);
+});
+
 
 Route::get('/pemeliharaan', function () {
     return view('pemeliharaan', [
@@ -49,10 +62,3 @@ Route::get('/koordinasi', function () {
         'title' => 'jadwal_koordinasi'
     ]);
 });
-
-//TODO tmabah keterangan, biaya, dan quantity di table maintenance
-//TODO tambah sekolah
-//TODO hilangkan halaman laporan
-//TODO tambah kolom realisasi start end di table
-//TODO tambah filter ke table
-//TODO tambah fitur user
