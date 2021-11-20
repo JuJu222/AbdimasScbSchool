@@ -18,9 +18,9 @@ class CurrativeMaintenanceController extends Controller
         $title = 'maintenance';
 
         $currativeMaintenances = CurrativeMaintenance::orderBy('project_id')
-            ->orderBy('year')
-            ->orderBy('month')
-            ->orderBy('week')
+            ->orderBy('year_plan')
+            ->orderBy('month_plan')
+            ->orderBy('week_plan')
             ->get();
 
         return view('perawatan', compact('title', 'currativeMaintenances'));
@@ -57,9 +57,9 @@ class CurrativeMaintenanceController extends Controller
 
         CurrativeMaintenance::create([
             'project_id' => $request->project_id,
-            'year' => $request->year,
-            'month' => $request->month,
-            'week' => $request->week,
+            'year_plan' => $request->year_plan,
+            'month_plan' => $request->month_plan,
+            'week_plan' => $request->week_plan,
             'status' => 'Belum',
         ]);
 

@@ -14,14 +14,6 @@ class CurrativeMaintenanceSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('currative_maintenances')->insert([
-            'project_id' => 1,
-            'year' => 2021,
-            'month' => '1',
-            'week' => 1,
-            'status' => 'Belum',
-            'created_at' => \Carbon\Carbon::now(),
-            'updated_at' => \Carbon\Carbon::now()
-        ]);
+
     }
 }

@@ -20,6 +20,7 @@
         <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
 
         <div id="toolbar">
+            <a href="{{ route('equipments.index') }}" class="btn btn-primary">Equipments</a>
             <button id="remove" class="btn btn-danger" disabled>
                 <i class="fa fa-trash"></i> Delete
             </button>
@@ -43,10 +44,16 @@
             <tr>
                 <th data-field="state" data-checkbox="true"></th>
                 <th data-field="nama_equipment" data-filter-control="select" data-sortable="true">Nama Equipment</th>
-                <th data-field="year" data-filter-control="select" data-sortable="true">Tahun</th>
-                <th data-field="month" data-filter-control="select" data-sortable="true">Bulan</th>
-                <th data-field="week" data-filter-control="select" data-sortable="true">Minggu</th>
+                <th data-field="quantity" data-sortable="true">Quantity</th>
+                <th data-field="biaya" data-sortable="true">Biaya</th>
+                <th data-field="year_plan" data-filter-control="select" data-sortable="true">Tahun Perencanaan</th>
+                <th data-field="month_plan" data-filter-control="select" data-sortable="true">Bulan Perencanaan</th>
+                <th data-field="week_plan" data-filter-control="select" data-sortable="true">Minggu Perencanaan</th>
                 <th data-field="status" data-filter-control="select" data-sortable="true">Status</th>
+                <th data-field="year_real" data-filter-control="select" data-sortable="true">Tahun Realisasi</th>
+                <th data-field="month_real" data-filter-control="select" data-sortable="true">Bulan Realisasi</th>
+                <th data-field="week_real" data-filter-control="select" data-sortable="true">Minggu Realisasi</th>
+                <th data-field="keterangan">Keterangan</th>
                 <th data-field="actions">Actions</th>
             </tr>
             </thead>
@@ -55,37 +62,70 @@
                 <tr>
                     <td></td>
                     <td>{{ $item->equipment->nama_equipment }}</td>
-                    <td>{{ $item->year }}</td>
+                    <td>{{ $item->quantity }}</td>
+                    <td>{{ $item->biaya }}</td>
+                    <td>{{ $item->year_plan }}</td>
                     <td>
-                        @if ($item->month === 1)
+                        @if ($item->month_plan === 1)
                             Januari
-                        @elseif ($item->month === 2)
+                        @elseif ($item->month_plan === 2)
                             Februari
-                        @elseif ($item->month === 3)
+                        @elseif ($item->month_plan === 3)
                             Maret
-                        @elseif ($item->month === 4)
+                        @elseif ($item->month_plan === 4)
                             April
-                        @elseif ($item->month === 5)
+                        @elseif ($item->month_plan === 5)
                             Mei
-                        @elseif ($item->month === 6)
+                        @elseif ($item->month_plan === 6)
                             Juni
-                        @elseif ($item->month === 7)
+                        @elseif ($item->month_plan === 7)
                             Juli
-                        @elseif ($item->month === 8)
+                        @elseif ($item->month_plan === 8)
                             Agustus
-                        @elseif ($item->month === 9)
+                        @elseif ($item->month_plan === 9)
                             September
-                        @elseif ($item->month === 10)
+                        @elseif ($item->month_plan === 10)
                             Oktober
-                        @elseif ($item->month === 11)
+                        @elseif ($item->month_plan === 11)
                             November
-                        @elseif ($item->month === 12)
+                        @elseif ($item->month_plan === 12)
                             Desember
                         @endif
                     </td>
-                    <td>{{ $item->week }}</td>
+                    <td>{{ $item->week_plan }}</td>
                     <td>{{ $item->status }}</td>
+                    <td>{{ $item->year_real }}</td>
                     <td>
+                        @if ($item->month_real === 1)
+                            Januari
+                        @elseif ($item->month_real === 2)
+                            Februari
+                        @elseif ($item->month_real === 3)
+                            Maret
+                        @elseif ($item->month_real === 4)
+                            April
+                        @elseif ($item->month_real === 5)
+                            Mei
+                        @elseif ($item->month_real === 6)
+                            Juni
+                        @elseif ($item->month_real === 7)
+                            Juli
+                        @elseif ($item->month_real === 8)
+                            Agustus
+                        @elseif ($item->month_real === 9)
+                            September
+                        @elseif ($item->month_real === 10)
+                            Oktober
+                        @elseif ($item->month_real === 11)
+                            November
+                        @elseif ($item->month_real === 12)
+                            Desember
+                        @endif
+                    </td>
+                    <td>{{ $item->week_real }}</td>
+                    <td>{{ $item->keterangan }}</td>
+                    <td>
+                        <a href="{{ route('pemeliharaan.lapor', $item->preventive_maintenance_id) }}" class="btn btn-primary">Lapor</a>
                         <a href="{{ route('pemeliharaan.edit', $item->preventive_maintenance_id) }}" class="btn btn-warning">Edit</a>
                         <form class="d-inline" action="{{ route('pemeliharaan.destroy', $item->preventive_maintenance_id) }}" method="POST">
                             @csrf

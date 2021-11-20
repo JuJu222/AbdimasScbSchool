@@ -52,7 +52,8 @@ Route::resource('equipments', EquipmentController::class);
 
 Route::resource('projects', ProjectController::class);
 
-Route::get('pemeliharaan/create/{equipment}/{year}', [PreventiveMaintenanceController::class, 'createWithData']);
+Route::get('pemeliharaan/create/{equipment_id}/{year_plan}', [PreventiveMaintenanceController::class, 'createWithData']);
+Route::get('pemeliharaan/lapor/{equipment_id}', [PreventiveMaintenanceController::class, 'lapor'])->name('pemeliharaan.lapor');
 Route::resource('pemeliharaan', PreventiveMaintenanceController::class);
 
 Route::resource('perawatan', CurrativeMaintenanceController::class);

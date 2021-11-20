@@ -21,9 +21,9 @@ class CreatePreventiveMaintenancesTable extends Migration
             $table->integer('year_plan');
             $table->tinyInteger('month_plan');
             $table->tinyInteger('week_plan');
-            $table->integer('year_real');
-            $table->tinyInteger('month_real');
-            $table->tinyInteger('week_real');
+            $table->integer('year_real')->nullable();;
+            $table->tinyInteger('month_real')->nullable();;
+            $table->tinyInteger('week_real')->nullable();;
             $table->string('keterangan')->nullable();
             $table->string('status');
             $table->timestamps();

@@ -18,9 +18,9 @@ class PreventiveMaintenanceController extends Controller
         $title = 'maintenance';
 
         $preventiveMaintenances = PreventiveMaintenance::orderBy('equipment_id')
-            ->orderBy('year')
-            ->orderBy('month')
-            ->orderBy('week')
+            ->orderBy('year_plan')
+            ->orderBy('month_plan')
+            ->orderBy('week_plan')
             ->get();
 
         return view('pemeliharaan', compact('title', 'preventiveMaintenances'));
@@ -54,7 +54,7 @@ class PreventiveMaintenanceController extends Controller
         $equipments = Equipment::all();
         $preventiveMaintenances = PreventiveMaintenance::where('equipment_id', $id)
             ->where('equipment_id', $id)
-            ->where('year', $year)
+            ->where('year_plan', $year)
             ->get();
 
         return view('pemeliharaan_create', compact('title', 'equipment_id', 'year', 'equipments', 'preventiveMaintenances'));
@@ -81,17 +81,19 @@ class PreventiveMaintenanceController extends Controller
 
                 if ($request->$name) {
                     $preventiveMaintenance = PreventiveMaintenance::where('equipment_id', $request->equipment_id)
-                        ->where('year', $request->year)
-                        ->where('month', $i)
-                        ->where('week', $j)
+                        ->where('year_plan', $request->year)
+                        ->where('month_plan', $i)
+                        ->where('week_plan', $j)
                         ->first();
 
                     if (!$preventiveMaintenance) {
                         PreventiveMaintenance::create([
                             'equipment_id' => $request->equipment_id,
-                            'year' => $request->year,
-                            'month' => $i,
-                            'week' => $j,
+                            'quantity' => $request->quantity,
+                            'biaya' => $request->biaya,
+                            'year_plan' => $request->year,
+                            'month_plan' => $i,
+                            'week_plan' => $j,
                             'status' => 'Belum',
                         ]);
                     }
@@ -134,6 +136,21 @@ class PreventiveMaintenanceController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function lapor($id)
+    {
+        $title = 'maintenance';
+
+        $preventiveMaintenance = PreventiveMaintenance::findOrFail($id);
+
+        return view('pemeliharaan_lapor', compact('title', 'preventiveMaintenance'));
     }
 
     /**

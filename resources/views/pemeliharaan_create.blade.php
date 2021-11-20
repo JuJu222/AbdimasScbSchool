@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <title>Maintenance - SCB Surabaya</title>
-</head>
-<body>
-    @include('layout.navigation_layout')
+@extends('layout.main_layout')
+
+@section('main_content')
     <div class="bg-dark" style="height:300px">
         <div class="container text-white">
             <h1 class="pt-5 text-center">Maintenance</h1>
@@ -29,6 +20,14 @@
                         @endif
                     @endforeach
                 </select>
+            </div>
+            <div class="form-group">
+                <label>Quantity</label>
+                <input type="number" name="quantity" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Biaya</label>
+                <input type="text" name="biaya" class="form-control">
             </div>
             <div class="form-group">
                 <label>Tahun</label>
@@ -78,7 +77,7 @@
                                 <label>Minggu {{ $j }}</label>
                                 <input name="{{ $i . '_' .$j }}" class="form-check-input" type="checkbox" value="{{ $j }}"
                                 @foreach ($preventiveMaintenances as $item)
-                                    @if ($item->month . '_' . $item->week == $i . '_' . $j)
+                                    @if ($item->month_plan . '_' . $item->week_plan == $i . '_' . $j)
                                         checked disabled
                                     @endif
                                 @endforeach
@@ -108,5 +107,4 @@
             location.href = '/pemeliharaan/create/' + equipment_id + '/' + year;
         });
     </script>
-</body>
-</html>
+@endsection

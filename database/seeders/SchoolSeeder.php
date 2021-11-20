@@ -50,7 +50,7 @@ class SchoolSeeder extends Seeder
             'updated_at' => \Carbon\Carbon::now()
         ]);
 
-        DB::table('schools')->Manado([
+        DB::table('schools')->insert([
             'nama_sekolah' => 'SCB Manado',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
