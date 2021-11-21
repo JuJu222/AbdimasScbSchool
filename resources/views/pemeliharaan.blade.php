@@ -13,7 +13,7 @@
     @include('layout.header')
 
     <div class="container mt-5">
-        <h2><b>Status Pemeliharaan<b></h2>
+        <h2><b>Status Pemeliharaan</b></h2>
     </div>
 
     <div class="container mt-3">
