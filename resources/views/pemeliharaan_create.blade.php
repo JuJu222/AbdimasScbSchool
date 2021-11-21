@@ -9,7 +9,7 @@
 }
 </style>
    
-    @include('layout.header')
+    
     <div class="container mt-5">
         <h1><b>Tambah Status Pemeliharaan</b></h1>
     </div>

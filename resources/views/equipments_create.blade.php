@@ -10,9 +10,11 @@
 </style>
    
 
+    <div class="container mt-5">
+        <h1><b>Tambah Equipments</b></h1>
+    </div>
 
-
-    <div class="container mt-5 mb-5">
+    <div class="container mt-3 mb-5">
         <form action="{{ route('equipments.store') }}" method="POST">
             @csrf
             <div class="form-group">

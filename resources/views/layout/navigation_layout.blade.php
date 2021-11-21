@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light navbar-inverse bg-light py-3 fixed-top">
+<nav class="navbar navbar-expand-lg navbar-expand-md navbar-light navbar-inverse bg-light py-3 fixed-top">
         <div class="container">
           <a class="navbar-brand " href="#">
             <img src="{{ asset('img/scb_logo.png') }}" alt="" width="238" height="37"></a>

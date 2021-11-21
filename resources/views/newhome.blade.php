@@ -83,7 +83,7 @@
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
                     <div class="card-body">
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque, tempora.</p>
+                        <p>Website ini bertujuan untuk melakukan monitoring berbagai kegiatan pemeliharaan dan perawatan gedung, fasilitas yang tersedia. Sehingga lebih tepat sasaran dan terealisasi dengan baik.</p>
                     </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@
                 </h2>
                 <div id="collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#myAccordion">
                     <div class="card-body">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, sapiente!</p>
+                        <p>Website ini memperlihatkan status dari pemeliharaan dan perawatan fasilitas. Selain itu akan terlihat juga jadwal koordinasi sekolah-sekolah dalam pelaksanaan pertemuan.</p>
                     </div>
                 </div>
             </div>
@@ -103,7 +103,7 @@
                 </h2>
                 <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
                     <div class="card-body">
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae, maxime.</p>
+                        <p>Hanya admin dan pihak yang diizinkan dapat mengubah dan menambah data. Bagi pengunjung hanya dapat melihat status data yang telah ada.</p>
                     </div>
                 </div>
             </div>

@@ -9,7 +9,9 @@
 }
 </style>
    
-
+    <div class="container mt-5">
+        <h1><b>Equipments</b></h1>
+    </div>
 
     <div class="container mt-3">
         <link href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css" rel="stylesheet">
