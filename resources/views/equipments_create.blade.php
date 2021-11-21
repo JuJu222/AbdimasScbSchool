@@ -1,12 +1,18 @@
 @extends('layout.main_layout')
 
 @section('main_content')
-    <div class="bg-dark" style="height:300px">
-        <div class="container text-white">
-            <h1 class="pt-5 text-center">Maintenance</h1>
-        </div>
-    </div>
-    <div class="container">
+<style>
+    body::before{
+    display: block;
+    content: '';
+    height: 60px;
+}
+</style>
+   
+
+
+
+    <div class="container mt-5 mb-5">
         <form action="{{ route('equipments.store') }}" method="POST">
             @csrf
             <div class="form-group">

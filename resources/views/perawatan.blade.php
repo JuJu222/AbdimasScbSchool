@@ -1,12 +1,19 @@
 @extends('layout.main_layout')
 
 @section('main_content')
-    <div class="bg-dark" style="height:300px">
-        <div class="container text-white">
-            <h1 class="pt-5 text-center">Perawatan</h1>
-        </div>
+<style>
+    body::before{
+    display: block;
+    content: '';
+    height: 60px;
+}
+</style>
+   
+    @include('layout.header')
+    <div class="container mt-5">
+        <h1><b>Status Perawatan</b></h1>
     </div>
-
+    
     <div class="container mt-3">
         <link href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css" rel="stylesheet">
 

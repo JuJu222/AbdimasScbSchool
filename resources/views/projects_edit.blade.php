@@ -1,11 +1,16 @@
 @extends('layout.main_layout')
 
 @section('main_content')
-    <div class="bg-dark" style="height:300px">
-        <div class="container text-white">
-            <h1 class="pt-5 text-center">Maintenance</h1>
-        </div>
-    </div>
+<style>
+    body::before{
+    display: block;
+    content: '';
+    height: 60px;
+}
+</style>
+   
+
+  
     <div class="container">
         <form action="{{ route('projects.update', $project->project_id) }}" method="POST">
             @csrf
