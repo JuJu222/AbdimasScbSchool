@@ -3,10 +3,10 @@
         <div class="d-sm-flex align-items-center justify-content-between">
             <div>
                 <h1>
-                    <span class="text-warning fw-bold">MOCISCHOOL
+                    <span class="text-warning fw-bold display-2">MOCISCHOOL
                     </span></h1>
                     <p class="lead my-4">
-                        "Monitor Ciputra System School"
+                        "Monitoring Operational Ciputra System School"
                     </p>
                     {{-- <button class="btn btn-primary btn-lg">Start</button> --}}
             </div>
