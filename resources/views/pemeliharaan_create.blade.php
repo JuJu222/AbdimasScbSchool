@@ -1,16 +1,25 @@
 @extends('layout.main_layout')
 
 @section('main_content')
-    <div class="bg-dark" style="height:300px">
-        <div class="container text-white">
-            <h1 class="pt-5 text-center">Maintenance</h1>
-        </div>
+<style>
+    body::before{
+    display: block;
+    content: '';
+    height: 60px;
+}
+</style>
+   
+    
+    <div class="container mt-5">
+        <h1><b>Tambah Status Pemeliharaan</b></h1>
     </div>
-    <div class="container">
+    
+
+    <div class="container mt-5">
         <form action="{{ route('pemeliharaan.store') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label>Nama Equipment</label>
+                <label><h4><b>Nama Equipment</b></h4></label>
                 <select name="equipment_id" class="form-select" id="equipment_id">
                     @foreach($equipments as $item)
                         @if ($item->equipment_id == $equipment_id)
@@ -22,15 +31,15 @@
                 </select>
             </div>
             <div class="form-group">
-                <label>Quantity</label>
+                <label class="mt-3"><h4><b>Quantity</b></h4></label>
                 <input type="number" name="quantity" class="form-control">
             </div>
             <div class="form-group">
-                <label>Biaya</label>
+                <label class="mt-3"><h4><b>Biaya</b></h4></label>
                 <input type="text" name="biaya" class="form-control">
             </div>
             <div class="form-group">
-                <label>Tahun</label>
+                <label class="mt-3"><h4><b>Tahun</b></h4></label>
                 <select name="year" class="form-select" id="year">
                     @for ($i = 2020; $i < 2030; $i++)
                         @if ($i == $year)
@@ -42,7 +51,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label>Bulan</label>
+                <label class="mt-3"><h4><b>Bulan</b></h4></label>
                 @for ($i = 1; $i <= 12; $i++)
                     <div>
                         <label>
@@ -87,7 +96,7 @@
                     </div>
                 @endfor
             </div>
-            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            <button type="submit" class="btn btn-primary mt-3 mb-3">Submit</button>
         </form>
         @if ($errors->any())
             <div class="alert alert-danger mt-3">
