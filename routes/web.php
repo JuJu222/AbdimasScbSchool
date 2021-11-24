@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CoordinationController;
 use App\Http\Controllers\CurrativeMaintenanceController;
 use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\PreventiveMaintenanceController;
@@ -35,31 +36,15 @@ Route::get('/register', function () {
     ]);
 });
 
-
-Route::get('/pemeliharaan', function () {
-    return view('pemeliharaan', [
-        'title' => 'pemeliharaan'
-    ]);
-});
-
-Route::get('/perawatan', function () {
-    return view('perawatan', [
-        'title' => 'perawatan'
-    ]);
-});
-
 Route::resource('equipments', EquipmentController::class);
 
 Route::resource('projects', ProjectController::class);
 
 Route::get('pemeliharaan/create/{equipment_id}/{year_plan}', [PreventiveMaintenanceController::class, 'createWithData']);
 Route::get('pemeliharaan/lapor/{equipment_id}', [PreventiveMaintenanceController::class, 'lapor'])->name('pemeliharaan.lapor');
+Route::post('pemeliharaan/laporStore/{equipment_id}', [PreventiveMaintenanceController::class, 'laporStore'])->name('pemeliharaan.laporStore');
 Route::resource('pemeliharaan', PreventiveMaintenanceController::class);
 
 Route::resource('perawatan', CurrativeMaintenanceController::class);
 
-Route::get('/koordinasi', function () {
-    return view('koordinasi', [
-        'title' => 'jadwal_koordinasi'
-    ]);
-});
+Route::resource('koordinasi', CoordinationController::class);

@@ -123,7 +123,12 @@ class PreventiveMaintenanceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $title = 'maintenance';
+
+        $equipments = Equipment::all();
+        $preventiveMaintenance = PreventiveMaintenance::query()->findOrFail($id);
+
+        return view('pemeliharaan_edit', compact('title', 'equipments', 'preventiveMaintenance'));
     }
 
     /**
@@ -151,6 +156,44 @@ class PreventiveMaintenanceController extends Controller
         $preventiveMaintenance = PreventiveMaintenance::findOrFail($id);
 
         return view('pemeliharaan_lapor', compact('title', 'preventiveMaintenance'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function laporStore (Request $request, $id)
+    {
+        $preventiveMaintenance = PreventiveMaintenance::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/img/uploads');
+            $image->move($destinationPath, $name);
+
+            $preventiveMaintenance->update([
+                'year_real' => $request->year_real,
+                'month_real' => $request->month_real,
+                'week_real' => $request->week_real,
+                'status' => "Selesai",
+                'keterangan' => $request->keterangan,
+                'image_path' => $name
+            ]);
+        } else {
+            $preventiveMaintenance->update([
+                'year_real' => $request->year_real,
+                'month_real' => $request->month_real,
+                'week_real' => $request->week_real,
+                'status' => "Selesai",
+                'keterangan' => $request->keterangan
+            ]);
+        }
+
+        return redirect(route('pemeliharaan.index'));
     }
 
     /**

@@ -3,12 +3,17 @@
 @section('main_content')
 <style>
     body::before{
-    display: block;
-    content: '';
-    height: 60px;
-}
+        display: block;
+        content: '';
+        height: 60px;
+    }
 </style>
-   
+
+
+    <div class="container mt-5">
+        <h1><b>Lapor Pemeliharaan</b></h1>
+    </div>
+
 
     <div class="container mt-3">
         <link href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css" rel="stylesheet">
@@ -75,10 +80,10 @@
                 </tr>
             </tbody>
         </table>
-        <form action="{{ route('pemeliharaan.store') }}" method="POST">
+        <form action="{{ route('pemeliharaan.laporStore', $preventiveMaintenance->preventive_maintenance_id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label>Tahun Realisasi</label>
+                <label class="mt-3"><h4><b>Tahun Realisasi</b></h4></label>
                 <select name="year_real" class="form-select">
                     @for ($i = 2020; $i < 2030; $i++)
                         <option value="{{ $i }}">{{ $i }}</option>
@@ -86,8 +91,8 @@
                 </select>
             </div>
             <div class="form-group">
-                <label>Bulan Realisasi</label>
-                <select name="bulan_real" class="form-select">
+                <label class="mt-3"><h4><b>Bulan Realisasi</b></h4></label>
+                <select name="month_real" class="form-select">
                     @for ($i = 1; $i <= 12; $i++)
                         <option value="{{ $i }}">@if ($i === 1)
                                 Januari
@@ -118,16 +123,20 @@
                 </select>
             </div>
             <div class="form-group">
-                <label>Minggu Realisasi</label>
-                <select name="year_real" class="form-select">
+                <label class="mt-3"><h4><b>Minggu Realisasi</b></h4></label>
+                <select name="week_real" class="form-select">
                     @for ($i = 1; $i <= 4; $i++)
                         <option value="{{ $i }}">{{ $i }}</option>
                     @endfor
                 </select>
             </div>
             <div class="form-group">
-                <label>Keterangan</label>
+                <label class="mt-3"><h4><b>Keterangan</b></h4></label>
                 <input type="text" name="keterangan" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="mt-3"><h4><b>Image</b></h4></label>
+                <input class="form-control" type="file" name="image">
             </div>
             <button type="submit" class="btn btn-primary mt-3">Submit</button>
         </form>

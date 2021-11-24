@@ -35,7 +35,7 @@ class CurrativeMaintenance extends Model
     use HasFactory;
 
     protected $primaryKey = 'currative_maintenance_id';
-    protected $fillable = ['project_id', 'quantity', 'biaya', 'year_plan', 'month_plan', 'week_plan', 'year_real', 'month_real', 'week_real', 'keterangan', 'status'];
+    protected $fillable = ['project_id', 'quantity', 'biaya', 'year_plan', 'month_plan', 'week_plan', 'year_real', 'month_real', 'week_real', 'status', 'keterangan', 'image_path'];
 
     public function project() {
         return $this->belongsTo(Project::class, 'project_id', 'project_id');

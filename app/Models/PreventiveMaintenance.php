@@ -35,7 +35,7 @@ class PreventiveMaintenance extends Model
     use HasFactory;
 
     protected $primaryKey = 'preventive_maintenance_id';
-    protected $fillable = ['equipment_id', 'quantity', 'biaya', 'year_plan', 'month_plan', 'week_plan', 'year_real', 'month_real', 'week_real', 'keterangan', 'status'];
+    protected $fillable = ['equipment_id', 'quantity', 'biaya', 'year_plan', 'month_plan', 'week_plan', 'year_real', 'month_real', 'week_real', 'status', 'keterangan', 'image_path'];
 
     public function equipment() {
         return $this->belongsTo(Equipment::class, 'equipment_id', 'equipment_id');

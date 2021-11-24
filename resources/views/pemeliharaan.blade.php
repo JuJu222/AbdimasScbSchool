@@ -8,7 +8,7 @@
     height: 60px;
 }
 </style>
-   
+
 
     @include('layout.header')
 
@@ -60,6 +60,7 @@
                 <th data-field="month_real" data-filter-control="select" data-sortable="true">Bulan Realisasi</th>
                 <th data-field="week_real" data-filter-control="select" data-sortable="true">Minggu Realisasi</th>
                 <th data-field="keterangan">Keterangan</th>
+                <th data-field="image">Image</th>
                 <th data-field="actions">Actions</th>
             </tr>
             </thead>
@@ -130,6 +131,11 @@
                     </td>
                     <td>{{ $item->week_real }}</td>
                     <td>{{ $item->keterangan }}</td>
+                    @if ($item->image_path)
+                        <td><a href="{{ asset('img/uploads/' . $item->image_path) }}">Link</a></td>
+                    @else
+                        <td></td>
+                    @endif
                     <td>
                         <a href="{{ route('pemeliharaan.lapor', $item->preventive_maintenance_id) }}" class="btn btn-primary">Lapor</a>
                         <a href="{{ route('pemeliharaan.edit', $item->preventive_maintenance_id) }}" class="btn btn-warning">Edit</a>
