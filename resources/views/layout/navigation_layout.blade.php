@@ -26,7 +26,7 @@
               <a class="nav-link
               @if ($title =='jadwal_koordinasi') active @endif" href="/koordinasi">Jadwal Koordinasi</a>
               </li>
-
+                @guest()
               <li class="nav-item">
                 <a class="btn btn-warning text fw-bold" href="/login">LOGIN</a>
                 </li>
@@ -34,6 +34,20 @@
               <li class="nav-item">
                 <a class="btn btn-danger" href="/register">REGISTER</a>
               </li>
+                @endguest
+                @auth()
+                    <li class="nav-item">
+                        <a class="btn btn-danger" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            LOGOUT
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </li>
+                @endauth
             </ul>
 
         </div>

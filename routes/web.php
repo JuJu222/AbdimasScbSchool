@@ -48,3 +48,7 @@ Route::resource('pemeliharaan', PreventiveMaintenanceController::class);
 Route::resource('perawatan', CurrativeMaintenanceController::class);
 
 Route::resource('koordinasi', CoordinationController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

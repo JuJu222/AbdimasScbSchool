@@ -1,5 +1,7 @@
 @extends('layout.main_layout')
 
+{{ $title = 'login' }}
+
 @section('main_content')
 
 <style>
@@ -40,7 +42,7 @@
         width: 100%;
         height: 45px;
         padding-left: 40px;
-        margin-bottom: 20px; 
+        margin-bottom: 20px;
         box-sizing: border-box;
         box-shadow: none;
         border: 1px solid #00000020;
@@ -113,46 +115,73 @@
                     <div class="img-left d-none d-md-flex"></div>
                     <div class="card-body">
                         <h4 class="title text-center mt-4">
-                            Registrasi Akun
+                            Login
                         </h4>
-                        <form action="" class="form-box px-3">
-
-                            <div class="form-input">
-                                <span><i class="bi bi-person-circle"></i></span>
-                                <input type="text" name="" placeholder="Nama Lengkap" required>
-                            </div>
-
+                        <form method="POST" action="{{ route('login') }}" class="form-box px-3">
+                            @csrf
                             <div class="form-input">
                                 <span><i class="bi bi-envelope"></i></span>
-                                <input type="email" name="" placeholder="Email Address" tabindex="10" required>
+                                <input id="email" placeholder="Email Address" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" tabindex="10" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                <div class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </div>
+                                @enderror
                             </div>
 
                             <div class="form-input">
                                 <span><i class="bi bi-key"></i></span>
-                                <input type="password" name="" placeholder="Password" required>
+                                <input id="password" placeholder="Password" type="password" class="@error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                @error('password')
+                                <div class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </div>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" name="" id="cb1" required>
-                                    <label class="custom-control-label" for="cb1">Saya memastikan data diatas telah benar</label>
+                                    <input class="custom-control-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                    <label class="custom-control-label" for="remember">
+                                        {{ __('Remember Me') }}
+                                    </label>
                                 </div>
-                                
+
                             </div>
 
                             <div class="mb-3 text-center">
-                                <button type="submit" class="btn btn-default text-uppercase">Register</button>
-                            </div> 
+                                <button type="submit" class="btn btn-default text-uppercase ">
+                                    {{ __('Login') }}
+                                </button>
 
+                                @if (Route::has('password.request'))
+                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        {{ __('Forgot Your Password?') }}
+                                    </a>
+                                @endif
+                            </div>
 
+                            {{-- <div class="text-center">
+                                <a href="#" class="forget-link">Forget Password?</a>
+                            </div> --}}
+
+                            <div class="text-center mb-2">
+                                Belum punya akun?
+                                <a href="/register" class="register-link">
+                                    Registrasi Disini!
+                                </a>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
 
-        
+
     </section>
 
-  
+
 @endsection

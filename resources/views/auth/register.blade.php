@@ -1,5 +1,7 @@
 @extends('layout.main_layout')
 
+{{ $title = 'login' }}
+
 @section('main_content')
 
 <style>
@@ -40,7 +42,7 @@
         width: 100%;
         height: 45px;
         padding-left: 40px;
-        margin-bottom: 20px; 
+        margin-bottom: 20px;
         box-sizing: border-box;
         box-shadow: none;
         border: 1px solid #00000020;
@@ -113,49 +115,64 @@
                     <div class="img-left d-none d-md-flex"></div>
                     <div class="card-body">
                         <h4 class="title text-center mt-4">
-                            Login
+                            Registrasi Akun
                         </h4>
-                        <form action="" class="form-box px-3">
+                        <form method="POST" action="{{ route('register') }}" class="form-box px-3">
+                            @csrf
+
+                            <div class="form-input">
+                                <span><i class="bi bi-person-circle"></i></span>
+                                <input id="name" placeholder="Nama Lengkap" type="text" class="@error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                                @error('name')
+                                <div class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </div>
+                                @enderror
+                            </div>
+
                             <div class="form-input">
                                 <span><i class="bi bi-envelope"></i></span>
-                                <input type="email" name="" placeholder="Email Address" tabindex="10" required>
+                                <input id="email" placeholder="Email Address" type="email" tabindex="10" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                                @error('email')
+                                <div class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </div>
+                                @enderror
                             </div>
 
                             <div class="form-input">
                                 <span><i class="bi bi-key"></i></span>
-                                <input type="password" name="" placeholder="Password" required>
+                                <input id="password" placeholder="Password" type="password" class="@error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                @error('password')
+                                <div class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </div>
+                                @enderror
                             </div>
 
-                            <div class="mb-3">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" name="" id="cb1">
-                                    <label class="custom-control-label" for="cb1">Ingat Saya</label>
-                                </div>
-                                
+                            <div class="form-input">
+                                <span><i class="bi bi-key"></i></span>
+                                <input id="password-confirm" placeholder="Confirm Password" type="password" name="password_confirmation" required autocomplete="new-password">
                             </div>
 
                             <div class="mb-3 text-center">
-                                <button type="submit" class="btn btn-default text-uppercase">Login</button>
-                            </div> 
-
-                            {{-- <div class="text-center">
-                                <a href="#" class="forget-link">Forget Password?</a>
-                            </div> --}}
-
-                            <div class="text-center mb-2">
-                                Belum punya akun?
-                                <a href="/register" class="register-link">
-                                    Registrasi Disini!
-                                </a>
+                                <button type="submit" class="btn btn-default text-uppercase">
+                                    {{ __('Register') }}
+                                </button>
                             </div>
+
+
                         </form>
                     </div>
                 </div>
             </div>
         </div>
 
-        
+
     </section>
 
-  
+
 @endsection
