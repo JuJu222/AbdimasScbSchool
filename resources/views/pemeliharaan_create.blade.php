@@ -8,18 +8,30 @@
     height: 60px;
 }
 </style>
-   
-    
+
+
     <div class="container mt-5">
         <h1><b>Tambah Status Pemeliharaan</b></h1>
     </div>
-    
+
 
     <div class="container mt-5">
         <form action="{{ route('pemeliharaan.store') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label><h4><b>Nama Equipment</b></h4></label>
+                <label><h4><b>Nama Sekolah</b></h4></label>
+                <select name="school_id" class="form-select" id="school_id">
+                    @foreach($schools as $item)
+                        @if ($item->school_id == $school_id)
+                            <option value="{{ $item->school_id }}" selected>{{ $item->nama_sekolah }}</option>
+                        @else
+                            <option value="{{ $item->school_id }}">{{ $item->nama_sekolah }}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="mt-3"><h4><b>Nama Equipment</b></h4></label>
                 <select name="equipment_id" class="form-select" id="equipment_id">
                     @foreach($equipments as $item)
                         @if ($item->equipment_id == $equipment_id)
@@ -109,11 +121,12 @@
         @endif
     </div>
     <script>
-        $('#equipment_id, #year').on('change', function (e) {
+        $('#school_id, #equipment_id, #year').on('change', function (e) {
+            let school_id = $("#school_id").val();
             let equipment_id = $("#equipment_id").val();
             let year = $("#year").val();
 
-            location.href = '/pemeliharaan/create/' + equipment_id + '/' + year;
+            location.href = '/pemeliharaan/create/' + school_id + '/' + year + '/' + equipment_id;
         });
     </script>
 @endsection

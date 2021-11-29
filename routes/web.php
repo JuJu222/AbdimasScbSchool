@@ -36,19 +36,30 @@ Route::get('/register', function () {
     ]);
 });
 
-Route::resource('equipments', EquipmentController::class);
-
-Route::resource('projects', ProjectController::class);
-
-Route::get('pemeliharaan/create/{equipment_id}/{year_plan}', [PreventiveMaintenanceController::class, 'createWithData']);
-Route::get('pemeliharaan/lapor/{equipment_id}', [PreventiveMaintenanceController::class, 'lapor'])->name('pemeliharaan.lapor');
-Route::post('pemeliharaan/laporStore/{equipment_id}', [PreventiveMaintenanceController::class, 'laporStore'])->name('pemeliharaan.laporStore');
-Route::resource('pemeliharaan', PreventiveMaintenanceController::class);
-
-Route::resource('perawatan', CurrativeMaintenanceController::class);
-
-Route::resource('koordinasi', CoordinationController::class);
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('equipments', EquipmentController::class);
+
+    Route::resource('projects', ProjectController::class);
+
+    Route::get('pemeliharaan/create/{school_id}/{year_plan}/{equipment_id}', [PreventiveMaintenanceController::class, 'createWithData'])->name('pemeliharaan.createWithData');
+    Route::get('pemeliharaan/lapor/{equipment_id}', [PreventiveMaintenanceController::class, 'lapor'])->name('pemeliharaan.lapor');
+    Route::post('pemeliharaan/laporStore/{equipment_id}', [PreventiveMaintenanceController::class, 'laporStore'])->name('pemeliharaan.laporStore');
+    Route::delete('pemeliharaan/{id}', [PreventiveMaintenanceController::class, 'destroy'])->name('pemeliharaan.delete');
+    Route::resource('pemeliharaan', PreventiveMaintenanceController::class, ['only' => ['index']]);
+
+    Route::resource('perawatan', CurrativeMaintenanceController::class);
+
+    Route::resource('koordinasi', CoordinationController::class);
+
+//    Route::middleware(['user'])->group(function () {
+//        Route::resource('pemeliharaan', PreventiveMaintenanceController::class, ['except' => ['edit', 'update', 'destroy']]);
+//    });
+//
+    Route::middleware(['admin'])->group(function () {
+        Route::resource('pemeliharaan', PreventiveMaintenanceController::class, ['except' => ['index']]);
+    });
+});

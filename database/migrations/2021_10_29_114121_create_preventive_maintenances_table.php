@@ -15,6 +15,7 @@ class CreatePreventiveMaintenancesTable extends Migration
     {
         Schema::create('preventive_maintenances', function (Blueprint $table) {
             $table->id('preventive_maintenance_id');
+            $table->foreignId('school_id');
             $table->foreignId('equipment_id');
             $table->string('quantity')->nullable();
             $table->string('biaya')->nullable();
@@ -31,6 +32,11 @@ class CreatePreventiveMaintenancesTable extends Migration
 
             $table->foreign('equipment_id')
                 ->references('equipment_id')->on('equipments')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('school_id')
+                ->references('school_id')->on('schools')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

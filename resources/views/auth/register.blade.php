@@ -1,7 +1,5 @@
 @extends('layout.main_layout')
 
-{{ $title = 'login' }}
-
 @section('main_content')
 
 <style>

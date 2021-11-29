@@ -30,7 +30,7 @@
                         </p>
                         <a href="/perawatan" class="btn btn-primary">Selengkapnya</a>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="col-md">
@@ -47,7 +47,7 @@
                         </p>
                         <a href="/pemeliharaan" class="btn btn-primary">Selengkapnya</a>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -60,11 +60,11 @@
         <h2 class="text-center mb-4">
             Pertanyaan yang Sering Ditanyakan
         </h2>
-        
+
         <div class="accordion" id="myAccordion">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
-                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne"><b>Apa fungsi dari Website ini?</b></button>									
+                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne"><b>Apa fungsi dari Website ini?</b></button>
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
                     <div class="card-body">
@@ -84,7 +84,7 @@
             </div>
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingThree">
-                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree"><b>Siapa saja yang dapat menambah dan mengubah data?</b></button>                     
+                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree"><b>Siapa saja yang dapat menambah dan mengubah data?</b></button>
                 </h2>
                 <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
                     <div class="card-body">
@@ -92,7 +92,7 @@
                     </div>
                 </div>
             </div>
-        </div>    
+        </div>
     </div>
 
 </section>

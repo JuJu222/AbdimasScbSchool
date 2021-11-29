@@ -1,7 +1,7 @@
 @extends('layout.main_layout')
 
 @section('main_content')
-    
+
 <style>
     body::before{
     display: block;
@@ -9,11 +9,11 @@
     height: 60px;
 }
 </style>
-   
 
-  
+
+
     <div class="container">
-       
+
         <form action="{{ route('perawatan.store') }}" method="POST">
             @csrf
             <div class="form-group">

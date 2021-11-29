@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Equipment;
 use App\Models\PreventiveMaintenance;
+use App\Models\School;
 use Illuminate\Http\Request;
 
 class PreventiveMaintenanceController extends Controller
@@ -17,7 +18,8 @@ class PreventiveMaintenanceController extends Controller
     {
         $title = 'maintenance';
 
-        $preventiveMaintenances = PreventiveMaintenance::orderBy('equipment_id')
+        $preventiveMaintenances = PreventiveMaintenance::orderBy('school_id')
+            ->orderBy('equipment_id')
             ->orderBy('year_plan')
             ->orderBy('month_plan')
             ->orderBy('week_plan')
@@ -43,21 +45,20 @@ class PreventiveMaintenanceController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function createWithData($id, $year)
+    public function createWithData($school_id, $year, $equipment_id)
     {
         $title = 'maintenance';
 
-        $equipment_id = $id;
+        $schools = School::all();
         $equipments = Equipment::all();
-        $preventiveMaintenances = PreventiveMaintenance::where('equipment_id', $id)
-            ->where('equipment_id', $id)
+        $preventiveMaintenances = PreventiveMaintenance::where('school_id', $school_id)
             ->where('year_plan', $year)
+            ->where('equipment_id', $equipment_id)
             ->get();
 
-        return view('pemeliharaan_create', compact('title', 'equipment_id', 'year', 'equipments', 'preventiveMaintenances'));
+        return view('pemeliharaan_create', compact('title', 'school_id', 'year', 'equipment_id', 'equipments', 'schools', 'preventiveMaintenances'));
     }
 
     /**
@@ -81,6 +82,7 @@ class PreventiveMaintenanceController extends Controller
 
                 if ($request->$name) {
                     $preventiveMaintenance = PreventiveMaintenance::where('equipment_id', $request->equipment_id)
+                        ->where('school_id', $request->school_id)
                         ->where('year_plan', $request->year)
                         ->where('month_plan', $i)
                         ->where('week_plan', $j)
@@ -88,6 +90,7 @@ class PreventiveMaintenanceController extends Controller
 
                     if (!$preventiveMaintenance) {
                         PreventiveMaintenance::create([
+                            'school_id' => $request->school_id,
                             'equipment_id' => $request->equipment_id,
                             'quantity' => $request->quantity,
                             'biaya' => $request->biaya,

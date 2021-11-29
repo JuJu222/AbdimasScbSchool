@@ -8,9 +8,9 @@
     height: 60px;
 }
 </style>
-   
 
-  
+
+
     <div class="container">
         <form action="{{ route('projects.store') }}" method="POST">
             @csrf

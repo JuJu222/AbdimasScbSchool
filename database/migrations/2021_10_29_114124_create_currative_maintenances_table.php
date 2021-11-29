@@ -15,6 +15,7 @@ class CreateCurrativeMaintenancesTable extends Migration
     {
         Schema::create('currative_maintenances', function (Blueprint $table) {
             $table->id('currative_maintenance_id');
+            $table->foreignId('school_id');
             $table->foreignId('project_id');
             $table->string('quantity')->nullable();
             $table->string('biaya')->nullable();
@@ -31,6 +32,11 @@ class CreateCurrativeMaintenancesTable extends Migration
 
             $table->foreign('project_id')
                 ->references('project_id')->on('projects')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('school_id')
+                ->references('school_id')->on('schools')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

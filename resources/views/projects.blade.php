@@ -8,9 +8,9 @@
     height: 60px;
 }
 </style>
-   
 
-   
+
+
     <div class="container mt-3">
         <link href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css" rel="stylesheet">
 

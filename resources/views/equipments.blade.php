@@ -8,7 +8,7 @@
     height: 60px;
 }
 </style>
-   
+
     <div class="container mt-5">
         <h1><b>Equipments</b></h1>
     </div>
