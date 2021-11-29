@@ -36,6 +36,7 @@
               </li>
                 @endguest
                 @auth()
+                    <span class="navbar-text mx-4">Welcome, {{ auth()->user()->name }}</span>
                     <li class="nav-item">
                         <a class="btn btn-danger" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
