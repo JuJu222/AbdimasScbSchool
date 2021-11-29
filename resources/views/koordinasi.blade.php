@@ -18,9 +18,7 @@
 
         <div id="toolbar">
             <a href="{{ route('equipments.index') }}" class="btn btn-primary">Equipments</a>
-            <button id="remove" class="btn btn-danger" disabled>
-                <i class="fa fa-trash"></i> Delete
-            </button>
+            <button id="remove" class="btn btn-danger" disabled>Delete</button>
         </div>
         <table id="table"
                data-toggle="table"

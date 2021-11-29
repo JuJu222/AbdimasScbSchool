@@ -49,6 +49,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('pemeliharaan/lapor/{equipment_id}', [PreventiveMaintenanceController::class, 'lapor'])->name('pemeliharaan.lapor');
     Route::post('pemeliharaan/laporStore/{equipment_id}', [PreventiveMaintenanceController::class, 'laporStore'])->name('pemeliharaan.laporStore');
     Route::delete('pemeliharaan/{id}', [PreventiveMaintenanceController::class, 'destroy'])->name('pemeliharaan.delete');
+    Route::post('pemeliharaan/deleteMany', [PreventiveMaintenanceController::class, 'destroyMany'])->name('pemeliharaan.deleteMany');
     Route::resource('pemeliharaan', PreventiveMaintenanceController::class, ['only' => ['index']]);
 
     Route::resource('perawatan', CurrativeMaintenanceController::class);

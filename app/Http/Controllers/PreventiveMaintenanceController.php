@@ -212,4 +212,19 @@ class PreventiveMaintenanceController extends Controller
 
         return redirect(route('pemeliharaan.index'));
     }
+
+    public function destroyMany(Request $request)
+    {
+        foreach ($request->message as $area)
+        {
+            $preventiveMaintenance = PreventiveMaintenance::findOrFail($area['preventive_maintenance_id']);
+            $preventiveMaintenance->delete();
+        }
+
+        $response = array(
+            'status' => 'success'
+        );
+
+        return response()->json($response);
+    }
 }

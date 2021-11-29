@@ -23,9 +23,7 @@
         <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
 
         <div id="toolbar">
-            <button id="remove" class="btn btn-danger" disabled>
-                <i class="fa fa-trash"></i> Delete
-            </button>
+           <button id="remove" class="btn btn-danger" disabled>Delete</button>
         </div>
         <table id="table"
                data-toggle="table"

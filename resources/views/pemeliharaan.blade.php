@@ -19,9 +19,7 @@
     <div class="container mt-3">
         <div id="toolbar">
             <a href="{{ route('equipments.index') }}" class="btn btn-primary">Equipments</a>
-            <button id="remove" class="btn btn-danger" disabled>
-                <i class="fa fa-trash"></i> Delete
-            </button>
+            <button id="remove" class="btn btn-danger" disabled>Delete</button>
         </div>
         <table id="table"
                data-toggle="table"
@@ -168,21 +166,22 @@
 
         $('#remove').click(function () {
             var ids = $table.bootstrapTable('getSelections')
-            for (let i = 0; i < ids.length; i++){
-                let obj = ids[i];
-                $.ajax({
-                    url: 'pemeliharaan/' + obj['preventive_maintenance_id'],
-                    type: 'POST',
-                    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-                    data: {
-                        "_token": "{{ csrf_token() }}"
-                    }
-                });
-            }
-            // ids.forEach(function (item, index) {
-            //     console.log(item)
-            //     location.href = '/pemeliharaan/destroy/' + item;
-            // })
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            })
+
+            $.ajax({
+                type: 'post',
+                url: 'pemeliharaan/deleteMany',
+                dataType: 'json',
+                data: {message:ids},
+                success: function (data) {
+                    location.href = '/pemeliharaan'
+                }
+            });
+
             $('#remove').prop('disabled', true)
             $("#var2").act
         })
