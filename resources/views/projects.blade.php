@@ -9,7 +9,9 @@
 }
 </style>
 
-
+    <div class="container mt-5">
+        <h1><b>Projects</b></h1>
+    </div>
 
     <div class="container mt-3">
         <link href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css" rel="stylesheet">
@@ -21,7 +23,7 @@
         <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
 
         <div id="toolbar">
-            <button id="remove" class="btn btn-danger" disabled>Delete</button>
+           <button id="remove" class="btn btn-danger" disabled>Delete</button>
         </div>
         <table id="table"
                data-toggle="table"
@@ -41,7 +43,7 @@
             <thead>
             <tr>
                 <th data-field="state" data-checkbox="true"></th>
-                <th data-field="jenis_project" data-sortable="true">Jenis Project</th>
+                <th data-field="jenis_project" data-sortable="true">Jenis project</th>
                 <th data-field="actions">Actions</th>
             </tr>
             </thead>

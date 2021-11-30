@@ -10,8 +10,10 @@
 </style>
 
 
-
-    <div class="container">
+    <div class="container mt-5">
+        <h1><b>Edit Projects</b></h1>
+    </div>
+    <div class="container mt-5 mb-5">
         <form action="{{ route('projects.update', $project->project_id) }}" method="POST">
             @csrf
             <input type="hidden" name="_method" value="PATCH">

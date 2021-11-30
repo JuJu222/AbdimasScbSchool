@@ -10,8 +10,11 @@
 </style>
 
 
+    <div class="container mt-5">
+        <h1><b>Tambah Projects</b></h1>
+    </div>
 
-    <div class="container">
+    <div class="container mt-3 mb-5">
         <form action="{{ route('projects.store') }}" method="POST">
             @csrf
             <div class="form-group">

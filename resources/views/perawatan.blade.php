@@ -17,14 +17,6 @@
     </div>
 
     <div class="container mt-3">
-        <link href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css" rel="stylesheet">
-
-        <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
-        <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
-        <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table-locale-en-US.min.js"></script>
-        <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/extensions/export/bootstrap-table-export.min.js"></script>
-        <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
-
         <div id="toolbar">
             <a href="{{ route('projects.index') }}" class="btn btn-primary">Projects</a>
             <button id="remove" class="btn btn-danger" disabled>Delete</button>
@@ -47,6 +39,8 @@
             <thead>
             <tr>
                 <th data-field="state" data-checkbox="true"></th>
+                <th data-field="currative_maintenance_id" data-visible="false">currative_maintenance_id</th>
+                <th data-field="nama_sekolah" data-filter-control="select" data-sortable="true">Nama Sekolah</th>
                 <th data-field="jenis_project" data-filter-control="select" data-sortable="true">Jenis Project</th>
                 <th data-field="quantity" data-sortable="true">Quantity</th>
                 <th data-field="biaya" data-sortable="true">Biaya</th>
@@ -66,6 +60,8 @@
             @foreach ($currativeMaintenances as $item)
                 <tr>
                     <td></td>
+                    <td>{{ $item->currative_maintenance_id }}</td>
+                    <td>{{ $item->school->nama_sekolah }}</td>
                     <td>{{ $item->project->jenis_project }}</td>
                     <td>{{ $item->quantity }}</td>
                     <td>{{ $item->biaya }}</td>
@@ -135,18 +131,59 @@
                         <td></td>
                     @endif
                     <td>
-                        <a href="{{ route('perawatan.lapor', $item->preventive_maintenance_id) }}" class="btn btn-primary">Lapor</a>
-                        <a href="{{ route('perawatan.edit', $item->preventive_maintenance_id) }}" class="btn btn-warning">Edit</a>
-                        <form class="d-inline" action="{{ route('perawatan.destroy', $item->preventive_maintenance_id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
+                        <a href="{{ route('perawatan.lapor', $item->currative_maintenance_id) }}" class="btn btn-primary">Lapor</a>
+                        @if (auth()->user()->role == 'admin')
+                            <a href="{{ route('perawatan.edit', $item->currative_maintenance_id) }}" class="btn btn-warning">Edit</a>
+                            <form class="d-inline" id="form_delete" action="{{ route('perawatan.destroy', $item->currative_maintenance_id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        @endif
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
-        <a href="perawatan/create/1/2020" class="btn btn-primary mt-3 mb-5">Add Preventive Maintenance</a>
+        <a href="{{ route('perawatan.createWithData', [1, 2020, 1]) }}" class="btn btn-primary mt-3 mb-5">Add Currative Maintenance</a>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" ></script>
+    <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table-locale-en-US.min.js"></script>
+    <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/extensions/export/bootstrap-table-export.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+    <script>
+        $table = $('#table')
+
+        $table.on('check.bs.table uncheck.bs.table ' +
+            'check-all.bs.table uncheck-all.bs.table',
+            function () {
+                $('#remove').prop('disabled', !$table.bootstrapTable('getSelections').length)
+            })
+
+
+        $('#remove').click(function () {
+            var ids = $table.bootstrapTable('getSelections')
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            })
+
+            $.ajax({
+                type: 'post',
+                url: 'perawatan/deleteMany',
+                dataType: 'json',
+                data: {message:ids},
+                success: function (data) {
+                    location.href = '/perawatan'
+                }
+            });
+
+            $('#remove').prop('disabled', true)
+            $("#var2").act
+        })
+    </script>
 @endsection
