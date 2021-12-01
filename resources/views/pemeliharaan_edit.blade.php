@@ -16,7 +16,7 @@
 
 
     <div class="container mt-3">
-        <form action="{{ route('pemeliharaan.laporStore', $preventiveMaintenance->preventive_maintenance_id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('pemeliharaan.update', $preventiveMaintenance->preventive_maintenance_id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label><h4><b>Nama Equipment</b></h4></label>

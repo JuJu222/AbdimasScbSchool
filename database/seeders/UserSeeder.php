@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
     {
         $admin = new User();
         $admin->name = 'Admin';
-        $admin->email = 'admin@mochischool.com';
+        $admin->email = 'admin@mocischool.com';
         $admin->password = Hash::make('admiN123');
         $admin->role = 'admin';
         $admin->created_at = Carbon::now();
@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
 
         $user = new User();
         $user->name = 'User';
-        $user->email = 'user@mochischool.com';
+        $user->email = 'user@mocischool.com';
         $user->password = Hash::make('useR123');
         $user->role = 'user';
         $user->created_at = Carbon::now();

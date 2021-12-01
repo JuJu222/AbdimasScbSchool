@@ -46,19 +46,21 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('projects', ProjectController::class);
 
     Route::get('pemeliharaan/create/{school_id}/{year_plan}/{equipment_id}', [PreventiveMaintenanceController::class, 'createWithData'])->name('pemeliharaan.createWithData');
-    Route::get('pemeliharaan/lapor/{equipment_id}', [PreventiveMaintenanceController::class, 'lapor'])->name('pemeliharaan.lapor');
-    Route::post('pemeliharaan/laporStore/{equipment_id}', [PreventiveMaintenanceController::class, 'laporStore'])->name('pemeliharaan.laporStore');
+    Route::get('pemeliharaan/lapor/{id}', [PreventiveMaintenanceController::class, 'lapor'])->name('pemeliharaan.lapor');
+    Route::post('pemeliharaan/laporStore/{id}', [PreventiveMaintenanceController::class, 'laporStore'])->name('pemeliharaan.laporStore');
     Route::delete('pemeliharaan/{id}', [PreventiveMaintenanceController::class, 'destroy'])->name('pemeliharaan.delete');
     Route::post('pemeliharaan/deleteMany', [PreventiveMaintenanceController::class, 'destroyMany'])->name('pemeliharaan.deleteMany');
     Route::resource('pemeliharaan', PreventiveMaintenanceController::class, ['only' => ['index']]);
 
     Route::get('perawatan/create/{school_id}/{year_plan}/{project_id}', [CurrativeMaintenanceController::class, 'createWithData'])->name('perawatan.createWithData');
-    Route::get('perawatan/lapor/{project_id}', [CurrativeMaintenanceController::class, 'lapor'])->name('perawatan.lapor');
-    Route::post('perawatan/laporStore/{project_id}', [CurrativeMaintenanceController::class, 'laporStore'])->name('perawatan.laporStore');
+    Route::get('perawatan/lapor/{id}', [CurrativeMaintenanceController::class, 'lapor'])->name('perawatan.lapor');
+    Route::post('perawatan/laporStore/{id}', [CurrativeMaintenanceController::class, 'laporStore'])->name('perawatan.laporStore');
     Route::delete('perawatan/{id}', [CurrativeMaintenanceController::class, 'destroy'])->name('perawatan.delete');
     Route::post('perawatan/deleteMany', [CurrativeMaintenanceController::class, 'destroyMany'])->name('perawatan.deleteMany');
     Route::resource('perawatan', CurrativeMaintenanceController::class);
 
+    Route::get('koordinasi/lapor/{id}', [CoordinationController::class, 'lapor'])->name('koordinasi.lapor');
+    Route::post('koordinasi/laporStore/{id}', [CoordinationController::class, 'laporStore'])->name('koordinasi.laporStore');
     Route::resource('koordinasi', CoordinationController::class);
 
 //    Route::middleware(['user'])->group(function () {

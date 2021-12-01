@@ -42,7 +42,58 @@ class CoordinationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Coordination::create([
+            'date_time' => $request->date_time,
+            'tema_koordinasi' => $request->tema_koordinasi,
+            'link_zoom' => $request->link_zoom,
+        ]);
+
+        return redirect(route('koordinasi.index'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function lapor($id)
+    {
+        $title = 'koordinasi';
+
+        $coordination = Coordination::findOrFail($id);
+
+        return view('koordinasi_lapor', compact('title', 'coordination'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function laporStore (Request $request, $id)
+    {
+        $coordination = Coordination::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/img/uploads');
+            $image->move($destinationPath, $name);
+
+            $coordination->update([
+                'keterangan' => $request->keterangan,
+                'image_path' => $name
+            ]);
+        } else {
+            $coordination->update([
+                'keterangan' => $request->keterangan
+            ]);
+        }
+
+        return redirect(route('koordinasi.index'));
     }
 
     /**

@@ -17,7 +17,6 @@
         <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
 
         <div id="toolbar">
-            <a href="{{ route('equipments.index') }}" class="btn btn-primary">Equipments</a>
             <button id="remove" class="btn btn-danger" disabled>Delete</button>
         </div>
         <table id="table"
@@ -56,9 +55,9 @@
                     <td>{{ $item->keterangan }}</td>
                     <td>{{ $item->image_path }}</td>
                     <td>
-                        <a href="" class="btn btn-primary">Lapor</a>
-                        <a href="{{ route('koordinasi.edit', $item->preventive_maintenance_id) }}" class="btn btn-warning">Edit</a>
-                        <form class="d-inline" action="{{ route('koordinasi.destroy', $item->preventive_maintenance_id) }}" method="POST">
+                        <a href="{{ route('koordinasi.lapor', $item->coordination_id) }}" class="btn btn-primary">Lapor</a>
+                        <a href="{{ route('koordinasi.edit', $item->coordination_id) }}" class="btn btn-warning">Edit</a>
+                        <form class="d-inline" action="{{ route('koordinasi.destroy', $item->coordination_id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>

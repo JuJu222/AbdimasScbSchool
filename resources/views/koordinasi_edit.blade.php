@@ -1,48 +1,48 @@
 @extends('layout.main_layout')
 
 @section('main_content')
-    <style>
-        body::before{
-            display: block;
-            content: '';
-            height: 60px;
-        }
-    </style>
+<style>
+    body::before{
+        display: block;
+        content: '';
+        height: 60px;
+    }
+</style>
 
 
     <div class="container mt-5">
-        <h1><b>Lapor Perawatan</b></h1>
+        <h1><b>Lapor Pemeliharaan</b></h1>
     </div>
 
 
     <div class="container mt-3">
-        <form action="{{ route('perawatan.update', $currativeMaintenance->currative_maintenance_id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('pemeliharaan.laporStore', $preventiveMaintenance->preventive_maintenance_id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label><h4><b>Nama Project</b></h4></label>
-                <select name="project_id" class="form-select" id="project_id">
-                    @foreach($projects as $item)
-                        @if ($item->project_id == $currativeMaintenance->project->project_id)
-                            <option value="{{ $item->project_id }}" selected>{{ $item->jenis_project }}</option>
+                <label><h4><b>Nama Equipment</b></h4></label>
+                <select name="equipment_id" class="form-select" id="equipment_id">
+                    @foreach($equipments as $item)
+                        @if ($item->equipment_id == $preventiveMaintenance->equipment->equipment_id)
+                            <option value="{{ $item->equipment_id }}" selected>{{ $item->nama_equipment }}</option>
                         @else
-                            <option value="{{ $item->project_id }}">{{ $item->jenis_project }}</option>
+                            <option value="{{ $item->equipment_id }}">{{ $item->nama_equipment }}</option>
                         @endif
                     @endforeach
                 </select>
             </div>
             <div class="form-group">
                 <label class="mt-3"><h4><b>Quantity</b></h4></label>
-                <input type="number" name="quantity" class="form-control" value="{{ $currativeMaintenance->quantity }}">
+                <input type="number" name="quantity" class="form-control" value="{{ $preventiveMaintenance->quantity }}">
             </div>
             <div class="form-group">
                 <label class="mt-3"><h4><b>Biaya</b></h4></label>
-                <input type="text" name="biaya" class="form-control" value="{{ $currativeMaintenance->biaya }}">
+                <input type="text" name="biaya" class="form-control" value="{{ $preventiveMaintenance->biaya }}">
             </div>
             <div class="form-group">
                 <label class="mt-3"><h4><b>Tahun Perencanaan</b></h4></label>
                 <select name="year" class="form-select" id="year">
                     @for ($i = 2020; $i < 2030; $i++)
-                        @if ($i == $currativeMaintenance->year_plan)
+                        @if ($i == $preventiveMaintenance->year_plan)
                             <option value="{{ $i }}" selected>{{ $i }}</option>
                         @else
                             <option value="{{ $i }}">{{ $i }}</option>
