@@ -23,7 +23,9 @@
         <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
 
         <div id="toolbar">
-           <button id="remove" class="btn btn-danger" disabled>Delete</button>
+           @if (auth()->user()->role == 'admin')
+                <button id="remove" class="btn btn-danger" disabled>Delete</button>
+            @endif
         </div>
         <table id="table"
                data-toggle="table"
@@ -43,27 +45,65 @@
             <thead>
             <tr>
                 <th data-field="state" data-checkbox="true"></th>
+                <th data-field="project_id" data-visible="false">project_id</th>
                 <th data-field="jenis_project" data-sortable="true">Jenis project</th>
-                <th data-field="actions">Actions</th>
+                @if (auth()->user()->role == 'admin')
+                    <th data-field="actions">Actions</th>
+                @endif
             </tr>
             </thead>
             <tbody>
             @foreach ($projects as $item)
                 <tr>
                     <td></td>
+                    <td>{{ $item->project_id }}</td>
                     <td>{{ $item->jenis_project }}</td>
-                    <td>
-                        <a href="{{ route('projects.edit', $item->project_id) }}" class="btn btn-warning">Edit</a>
-                        <form class="d-inline" action="{{ route('projects.destroy', $item->project_id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                    </td>
+                    @if (auth()->user()->role == 'admin')
+                        <td>
+                            <a href="{{ route('projects.edit', $item->project_id) }}" class="btn btn-warning">Edit</a>
+                            <form class="d-inline" action="{{ route('projects.destroy', $item->project_id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    @endif
                 </tr>
             @endforeach
             </tbody>
         </table>
         <a href="{{ route('projects.create') }}" class="btn btn-primary mt-3 mb-5">Add Project</a>
     </div>
+<script>
+    $table = $('#table')
+
+    $table.on('check.bs.table uncheck.bs.table ' +
+        'check-all.bs.table uncheck-all.bs.table',
+        function () {
+            $('#remove').prop('disabled', !$table.bootstrapTable('getSelections').length)
+        })
+
+
+    $('#remove').click(function () {
+        var ids = $table.bootstrapTable('getSelections')
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        })
+
+        $.ajax({
+            type: 'post',
+            url: 'projects/deleteMany',
+            dataType: 'json',
+            data: {message:ids},
+            success: function (data) {
+                location.href = '/projects'
+            }
+        });
+
+        $('#remove').prop('disabled', true)
+        $("#var2").act
+    })
+</script>
 @endsection

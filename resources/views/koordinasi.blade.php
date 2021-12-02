@@ -17,7 +17,9 @@
         <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
 
         <div id="toolbar">
-            <button id="remove" class="btn btn-danger" disabled>Delete</button>
+            @if (auth()->user()->role == 'admin')
+                <button id="remove" class="btn btn-danger" disabled>Delete</button>
+            @endif
         </div>
         <table id="table"
                data-toggle="table"
@@ -37,6 +39,7 @@
             <thead>
             <tr>
                 <th data-field="state" data-checkbox="true"></th>
+                <th data-field="coordination_id" data-visible="false">coordination_id</th>
                 <th data-field="date_time" data-sortable="true">Date Time</th>
                 <th data-field="tema_koordinasi" data-filter-control="select" data-sortable="true">Tema Koordinasi</th>
                 <th data-field="link_zoom">Link Zoom</th>
@@ -49,19 +52,26 @@
             @foreach ($coordinations as $item)
                 <tr>
                     <td></td>
+                    <td>{{ $item->coordination_id }}</td>
                     <td>{{ $item->date_time }}</td>
                     <td>{{ $item->tema_koordinasi }}</td>
-                    <td>{{ $item->link_zoom }}</td>
+                    <td><a target="_blank" rel="noopener noreferrer" href="{{ $item->link_zoom }}">{{ $item->link_zoom }}</a></td>
                     <td>{{ $item->keterangan }}</td>
-                    <td>{{ $item->image_path }}</td>
+                    @if ($item->image_path)
+                        <td><a target="_blank" rel="noopener noreferrer" href="{{ asset('img/uploads/' . $item->image_path) }}">Link</a></td>
+                    @else
+                        <td></td>
+                    @endif
                     <td>
                         <a href="{{ route('koordinasi.lapor', $item->coordination_id) }}" class="btn btn-primary">Lapor</a>
-                        <a href="{{ route('koordinasi.edit', $item->coordination_id) }}" class="btn btn-warning">Edit</a>
-                        <form class="d-inline" action="{{ route('koordinasi.destroy', $item->coordination_id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
+                        @if (auth()->user()->role == 'admin')
+                            <a href="{{ route('koordinasi.edit', $item->coordination_id) }}" class="btn btn-warning">Edit</a>
+                            <form class="d-inline" action="{{ route('koordinasi.destroy', $item->coordination_id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        @endif
                     </td>
                 </tr>
             @endforeach
@@ -69,4 +79,36 @@
         </table>
         <a href="{{ route('koordinasi.create') }}" class="btn btn-primary mt-3 mb-5">Add Coordination</a>
     </div>
+    <script>
+        $table = $('#table')
+
+        $table.on('check.bs.table uncheck.bs.table ' +
+            'check-all.bs.table uncheck-all.bs.table',
+            function () {
+                $('#remove').prop('disabled', !$table.bootstrapTable('getSelections').length)
+            })
+
+
+        $('#remove').click(function () {
+            var ids = $table.bootstrapTable('getSelections')
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            })
+
+            $.ajax({
+                type: 'post',
+                url: 'koordinasi/deleteMany',
+                dataType: 'json',
+                data: {message:ids},
+                success: function (data) {
+                    location.href = '/koordinasi'
+                }
+            });
+
+            $('#remove').prop('disabled', true)
+            $("#var2").act
+        })
+    </script>
 @endsection

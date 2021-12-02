@@ -47,7 +47,7 @@
             </tbody>
         </table>
 
-        <form action="{{ route('koordinasi.laporStore', $coordination->coordination_id) }}" method="POST">
+        <form action="{{ route('koordinasi.laporStore', $coordination->coordination_id) }}"  method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label class="mt-3"><h4><b>Keterangan</b></h4></label>

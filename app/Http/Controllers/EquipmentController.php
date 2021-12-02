@@ -119,4 +119,19 @@ class EquipmentController extends Controller
 
         return redirect(route('equipments.index'));
     }
+
+    public function destroyMany(Request $request)
+    {
+        foreach ($request->message as $area)
+        {
+            $equipment = Equipment::findOrFail($area['equipment_id']);
+            $equipment->delete();
+        }
+
+        $response = array(
+            'status' => 'success'
+        );
+
+        return response()->json($response);
+    }
 }

@@ -19,7 +19,9 @@
     <div class="container mt-3">
         <div id="toolbar">
             <a href="{{ route('equipments.index') }}" class="btn btn-primary">Equipments</a>
-            <button id="remove" class="btn btn-danger" disabled>Delete</button>
+            @if (auth()->user()->role == 'admin')
+                <button id="remove" class="btn btn-danger" disabled>Delete</button>
+            @endif
         </div>
         <table id="table"
                data-toggle="table"
@@ -126,7 +128,7 @@
                     <td>{{ $item->week_real }}</td>
                     <td>{{ $item->keterangan }}</td>
                     @if ($item->image_path)
-                        <td><a href="{{ asset('img/uploads/' . $item->image_path) }}">Link</a></td>
+                        <td><a target="_blank" rel="noopener noreferrer" href="{{ asset('img/uploads/' . $item->image_path) }}">Link</a></td>
                     @else
                         <td></td>
                     @endif

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Coordination;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class CoordinationController extends Controller
 {
@@ -83,6 +84,10 @@ class CoordinationController extends Controller
             $destinationPath = public_path('/img/uploads');
             $image->move($destinationPath, $name);
 
+            if ($coordination->image_path) {
+                File::delete(public_path('/img/uploads') . '/' . $coordination->image_path);
+            }
+
             $coordination->update([
                 'keterangan' => $request->keterangan,
                 'image_path' => $name
@@ -115,7 +120,11 @@ class CoordinationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $title = 'coordination';
+
+        $coordination = Coordination::query()->findOrFail($id);
+
+        return view('koordinasi_edit', compact('title', 'coordination'));
     }
 
     /**
@@ -127,7 +136,35 @@ class CoordinationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $coordination = Coordination::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/img/uploads');
+            $image->move($destinationPath, $name);
+
+            if ($coordination->image_path) {
+                File::delete(public_path('/img/uploads') . '/' . $coordination->image_path);
+            }
+
+            $coordination->update([
+                'date_time' => $request->date_time,
+                'tema_koordinasi' => $request->tema_koordinasi,
+                'link_zoom' => $request->link_zoom,
+                'keterangan' => $request->keterangan,
+                'image_path' => $name
+            ]);
+        } else {
+            $coordination->update([
+                'date_time' => $request->date_time,
+                'tema_koordinasi' => $request->tema_koordinasi,
+                'link_zoom' => $request->link_zoom,
+                'keterangan' => $request->keterangan,
+            ]);
+        }
+
+        return redirect(route('koordinasi.index'));
     }
 
     /**
@@ -139,8 +176,27 @@ class CoordinationController extends Controller
     public function destroy($id)
     {
         $coordination = Coordination::query()->findOrFail($id);
+
+        File::delete(public_path('/img/uploads') . '/' . $coordination->image_path);
         $coordination->delete();
 
         return redirect(route('koordinasi.index'));
+    }
+
+    public function destroyMany(Request $request)
+    {
+        foreach ($request->message as $area)
+        {
+            $coordination = Coordination::findOrFail($area['coordination_id']);
+
+            File::delete(public_path('/img/uploads') . '/' . $coordination->image_path);
+            $coordination->delete();
+        }
+
+        $response = array(
+            'status' => 'success'
+        );
+
+        return response()->json($response);
     }
 }

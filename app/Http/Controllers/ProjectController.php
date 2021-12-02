@@ -120,4 +120,19 @@ class ProjectController extends Controller
 
         return redirect(route('projects.index'));
     }
+
+    public function destroyMany(Request $request)
+    {
+        foreach ($request->message as $area)
+        {
+            $project = Project::findOrFail($area['project_id']);
+            $project->delete();
+        }
+
+        $response = array(
+            'status' => 'success'
+        );
+
+        return response()->json($response);
+    }
 }

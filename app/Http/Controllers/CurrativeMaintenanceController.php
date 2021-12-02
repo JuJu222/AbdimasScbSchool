@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Models\CurrativeMaintenance;
 use App\Models\School;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class CurrativeMaintenanceController extends Controller
 {
@@ -128,10 +129,11 @@ class CurrativeMaintenanceController extends Controller
     {
         $title = 'maintenance';
 
+        $schools = School::all();
         $projects = Project::all();
         $currativeMaintenance = CurrativeMaintenance::query()->findOrFail($id);
 
-        return view('perawatan_edit', compact('title', 'projects', 'currativeMaintenance'));
+        return view('perawatan_edit', compact('title', 'schools', 'projects', 'currativeMaintenance'));
     }
 
     /**
@@ -143,7 +145,51 @@ class CurrativeMaintenanceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $currativeMaintenance = CurrativeMaintenance::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/img/uploads');
+            $image->move($destinationPath, $name);
+
+            if ($currativeMaintenance->image_path) {
+                File::delete(public_path('/img/uploads') . '/' . $currativeMaintenance->image_path);
+            }
+
+            $currativeMaintenance->update([
+                'school_id' => $request->school_id,
+                'project_id' => $request->project_id,
+                'quantity' => $request->quantity,
+                'biaya' => $request->biaya,
+                'year_plan' => $request->year_plan,
+                'month_plan' => $request->month_plan,
+                'week_plan' => $request->week_plan,
+                'year_real' => $request->year_real,
+                'month_real' => $request->month_real,
+                'week_real' => $request->week_real,
+                'status' => $request->status,
+                'keterangan' => $request->keterangan,
+                'image_path' => $name
+            ]);
+        } else {
+            $currativeMaintenance->update([
+                'school_id' => $request->school_id,
+                'project_id' => $request->project_id,
+                'quantity' => $request->quantity,
+                'biaya' => $request->biaya,
+                'year_plan' => $request->year_plan,
+                'month_plan' => $request->month_plan,
+                'week_plan' => $request->week_plan,
+                'year_real' => $request->year_real,
+                'month_real' => $request->month_real,
+                'week_real' => $request->week_real,
+                'status' => $request->status,
+                'keterangan' => $request->keterangan
+            ]);
+        }
+
+        return redirect(route('perawatan.index'));
     }
 
     /**
@@ -178,6 +224,10 @@ class CurrativeMaintenanceController extends Controller
             $destinationPath = public_path('/img/uploads');
             $image->move($destinationPath, $name);
 
+            if ($currativeMaintenance->image_path) {
+                File::delete(public_path('/img/uploads') . '/' . $currativeMaintenance->image_path);
+            }
+
             $currativeMaintenance->update([
                 'year_real' => $request->year_real,
                 'month_real' => $request->month_real,
@@ -208,6 +258,8 @@ class CurrativeMaintenanceController extends Controller
     public function destroy($id)
     {
         $currativeMaintenance = CurrativeMaintenance::findOrFail($id);
+
+        File::delete(public_path('/img/uploads') . '/' . $currativeMaintenance->image_path);
         $currativeMaintenance->delete();
 
         return redirect(route('perawatan.index'));
@@ -218,6 +270,8 @@ class CurrativeMaintenanceController extends Controller
         foreach ($request->message as $area)
         {
             $currativeMaintenance = CurrativeMaintenance::findOrFail($area['currative_maintenance_id']);
+
+            File::delete(public_path('/img/uploads') . '/' . $currativeMaintenance->image_path);
             $currativeMaintenance->delete();
         }
 

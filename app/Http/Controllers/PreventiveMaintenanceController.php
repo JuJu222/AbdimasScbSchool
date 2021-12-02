@@ -6,6 +6,7 @@ use App\Models\Equipment;
 use App\Models\PreventiveMaintenance;
 use App\Models\School;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class PreventiveMaintenanceController extends Controller
 {
@@ -128,10 +129,11 @@ class PreventiveMaintenanceController extends Controller
     {
         $title = 'maintenance';
 
+        $schools = School::all();
         $equipments = Equipment::all();
         $preventiveMaintenance = PreventiveMaintenance::query()->findOrFail($id);
 
-        return view('pemeliharaan_edit', compact('title', 'equipments', 'preventiveMaintenance'));
+        return view('pemeliharaan_edit', compact('title', 'schools', 'equipments', 'preventiveMaintenance'));
     }
 
     /**
@@ -143,7 +145,51 @@ class PreventiveMaintenanceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $preventiveMaintenance = PreventiveMaintenance::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/img/uploads');
+            $image->move($destinationPath, $name);
+
+            if ($preventiveMaintenance->image_path) {
+                File::delete(public_path('/img/uploads') . '/' . $preventiveMaintenance->image_path);
+            }
+
+            $preventiveMaintenance->update([
+                'school_id' => $request->school_id,
+                'equipment_id' => $request->equipment_id,
+                'quantity' => $request->quantity,
+                'biaya' => $request->biaya,
+                'year_plan' => $request->year_plan,
+                'month_plan' => $request->month_plan,
+                'week_plan' => $request->week_plan,
+                'year_real' => $request->year_real,
+                'month_real' => $request->month_real,
+                'week_real' => $request->week_real,
+                'status' => $request->status,
+                'keterangan' => $request->keterangan,
+                'image_path' => $name
+            ]);
+        } else {
+            $preventiveMaintenance->update([
+                'school_id' => $request->school_id,
+                'equipment_id' => $request->equipment_id,
+                'quantity' => $request->quantity,
+                'biaya' => $request->biaya,
+                'year_plan' => $request->year_plan,
+                'month_plan' => $request->month_plan,
+                'week_plan' => $request->week_plan,
+                'year_real' => $request->year_real,
+                'month_real' => $request->month_real,
+                'week_real' => $request->week_real,
+                'status' => $request->status,
+                'keterangan' => $request->keterangan
+            ]);
+        }
+
+        return redirect(route('pemeliharaan.index'));
     }
 
     /**
@@ -178,6 +224,10 @@ class PreventiveMaintenanceController extends Controller
             $destinationPath = public_path('/img/uploads');
             $image->move($destinationPath, $name);
 
+            if ($preventiveMaintenance->image_path) {
+                File::delete(public_path('/img/uploads') . '/' . $preventiveMaintenance->image_path);
+            }
+
             $preventiveMaintenance->update([
                 'year_real' => $request->year_real,
                 'month_real' => $request->month_real,
@@ -208,6 +258,8 @@ class PreventiveMaintenanceController extends Controller
     public function destroy($id)
     {
         $preventiveMaintenance = PreventiveMaintenance::findOrFail($id);
+
+        File::delete(public_path('/img/uploads') . '/' . $preventiveMaintenance->image_path);
         $preventiveMaintenance->delete();
 
         return redirect(route('pemeliharaan.index'));
@@ -218,6 +270,8 @@ class PreventiveMaintenanceController extends Controller
         foreach ($request->message as $area)
         {
             $preventiveMaintenance = PreventiveMaintenance::findOrFail($area['preventive_maintenance_id']);
+
+            File::delete(public_path('/img/uploads') . '/' . $preventiveMaintenance->image_path);
             $preventiveMaintenance->delete();
         }
 
