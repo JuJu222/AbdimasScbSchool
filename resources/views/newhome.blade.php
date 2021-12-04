@@ -28,7 +28,7 @@
                         <p class="card-text">
                             Pengecatan Gedung Berkala, Pengecatan Lapangan Basket, Perbaikan Kebocoran, Renovasi Gedung, dan Pembangunan Fasilitas Tambahan
                         </p>
-                        <a href="/perawatan" class="btn btn-primary">Selengkapnya</a>
+                        <a href="/perawatan" class="btn btn-primary mb-3">Selengkapnya</a>
                     </div>
 
                 </div>
@@ -45,7 +45,7 @@
                         <p class="card-text">
                             AC, Panel Listrik, Lampu, Arrester, Eksterior/Interior Gedung, Hydrant, Torent, Genset, Alarm, Pest Control, Landscape, dan Pembersihan Selokan
                         </p>
-                        <a href="/pemeliharaan" class="btn btn-primary">Selengkapnya</a>
+                        <a href="/pemeliharaan" class="btn btn-primary mb-3">Selengkapnya</a>
                     </div>
 
                 </div>
@@ -53,6 +53,16 @@
         </div>
     </div>
 </section>
+
+<!-- Dokumen Pemeliharaan Gedung dan Fasilitas -->
+
+<section class="p-5">
+    <div class="container text-center">
+        <h2 class="text-center">Pedoman Pemeliharaan Gedung dan Fasilitasnya</h2>
+        <a href="#" class="btn btn-info text-center">Dapat Dilihat Disini</a>
+    </div>
+</section>
+
 
 <!-- FAQ -->
 <section id="questions" class="p-5">

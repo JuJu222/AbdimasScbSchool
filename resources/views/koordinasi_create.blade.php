@@ -11,11 +11,11 @@
 
 
     <div class="container mt-5">
-        <h1><b>Tambah Status Pemeliharaan</b></h1>
+        <h1><b>Tambah Jadwal Koordinasi</b></h1>
     </div>
 
 
-    <div class="container mt-5">
+    <div class="container mt-5" style="margin-bottom: 300px">
         <form action="{{ route('koordinasi.store') }}" method="POST">
             @csrf
             <div class="form-group">
