@@ -15,7 +15,7 @@
     </div>
 
 
-    <div class="container mt-5">
+    <div class="container mt-5" >
         <form action="{{ route('pemeliharaan.store') }}" method="POST">
             @csrf
             <div class="form-group">

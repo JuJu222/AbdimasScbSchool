@@ -77,7 +77,7 @@
             @endforeach
             </tbody>
         </table>
-        <a href="{{ route('koordinasi.create') }}" class="btn btn-primary mt-3 mb-5">Add Coordination</a>
+        <a href="{{ route('koordinasi.create') }}" class="btn btn-primary mt-3 mb-5">Tambah Koordinasi</a>
     </div>
     <script>
         $table = $('#table')
