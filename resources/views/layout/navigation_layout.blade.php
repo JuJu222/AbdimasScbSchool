@@ -26,6 +26,14 @@
               <a class="nav-link
               @if ($title =='jadwal_koordinasi') active @endif" href="/koordinasi">Jadwal Koordinasi</a>
               </li>
+
+              <li class="nav-item">
+                <a class="nav-link
+                @if ($title =='list_video') active @endif" href="/video">Video</a>
+                </li>
+
+              
+
                 @guest()
               <li class="nav-item">
                 <a class="btn btn-warning text fw-bold" href="/login">LOGIN</a>

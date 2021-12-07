@@ -24,6 +24,14 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/video', function () {
+    return view('listvideo', [
+        'title' => 'list_video'
+    ]);
+});
+
+
+
 Route::get('/login', function () {
     return view('/user/login', [
         'title' => 'login'
