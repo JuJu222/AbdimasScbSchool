@@ -64,6 +64,7 @@
             </div>
             <div class="form-group">
                 <label class="mt-3"><h4><b>Bulan</b></h4></label>
+                <div class="mb-2"><mark>* Bila pemeliharaan mencangkup minggu kelima di bulan tertentu maka akan dianggap sebagai minggu pertama dari bulan berikutnya.</mark></div>
                 @for ($i = 1; $i <= 12; $i++)
                     <div>
                         <label>

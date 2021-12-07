@@ -20,6 +20,7 @@
             @csrf
             <div class="form-group">
                 <label><h4><b>Tanggal & Jam</b></h4></label>
+                <div class="mb-2"><mark>Contoh: 12/31/2021, 02:00 PM</mark></div>
                 <input type="datetime-local" name="date_time" class="form-control">
             </div>
             <div class="form-group">
