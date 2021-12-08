@@ -59,7 +59,7 @@
 <section class="p-5">
     <div class="container text-center">
         <h2 class="text-center">Pedoman Pemeliharaan Gedung dan Fasilitasnya</h2>
-        <a href="#" class="btn btn-info text-center">Dapat Dilihat Disini</a>
+        <a href="https://docs.google.com/presentation/d/1rDN4rMGPfk0fIgdvgYuj-DW9_Ao0Zpw1/edit?usp=sharing&ouid=117560145988640740397&rtpof=true&sd=true" class="btn btn-info text-center">Dapat Dilihat Disini</a>
     </div>
 </section>
 
