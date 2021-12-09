@@ -84,6 +84,7 @@
             <div class="form-group">
                 <label class="mt-3"><h4><b>Tahun Realisasi</b></h4></label>
                 <select name="year_real" class="form-select">
+                    <option value="" selected></option>
                     @for ($i = 2020; $i < 2030; $i++)
                         <option value="{{ $i }}">{{ $i }}</option>
                     @endfor
@@ -92,6 +93,7 @@
             <div class="form-group">
                 <label class="mt-3"><h4><b>Bulan Realisasi</b></h4></label>
                 <select name="month_real" class="form-select">
+                    <option value="" selected></option>
                     @for ($i = 1; $i <= 12; $i++)
                         <option value="{{ $i }}">@if ($i === 1)
                                 Januari
@@ -124,6 +126,7 @@
             <div class="form-group">
                 <label class="mt-3"><h4><b>Minggu Realisasi</b></h4></label>
                 <select name="week_real" class="form-select">
+                    <option value="" selected></option>
                     @for ($i = 1; $i <= 4; $i++)
                         <option value="{{ $i }}">{{ $i }}</option>
                     @endfor
@@ -132,6 +135,14 @@
             <div class="form-group">
                 <label class="mt-3"><h4><b>Keterangan</b></h4></label>
                 <input type="text" name="keterangan" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="mt-3"><h4><b>Status</b></h4></label>
+                <select name="status" class="form-select" id="status">
+                    <option value="Belum" selected>Belum</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Selesai">Selesai</option>
+                </select>
             </div>
             <div class="form-group">
                 <label class="mt-3"><h4><b>Image</b></h4></label>

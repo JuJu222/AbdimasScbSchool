@@ -232,7 +232,7 @@ class PreventiveMaintenanceController extends Controller
                 'year_real' => $request->year_real,
                 'month_real' => $request->month_real,
                 'week_real' => $request->week_real,
-                'status' => "Selesai",
+                'status' => $request->status,
                 'keterangan' => $request->keterangan,
                 'image_path' => $name
             ]);
@@ -241,7 +241,7 @@ class PreventiveMaintenanceController extends Controller
                 'year_real' => $request->year_real,
                 'month_real' => $request->month_real,
                 'week_real' => $request->week_real,
-                'status' => "Selesai",
+                'status' => $request->status,
                 'keterangan' => $request->keterangan
             ]);
         }
