@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\School;
 use Illuminate\Http\Request;
 
 class SchoolController extends Controller
@@ -13,7 +14,11 @@ class SchoolController extends Controller
      */
     public function index()
     {
-        //
+        $title = 'school';
+
+        $schools = School::all();
+
+        return view('schools', compact('title', 'schools'));
     }
 
     /**
@@ -23,7 +28,9 @@ class SchoolController extends Controller
      */
     public function create()
     {
-        //
+        $title = 'school';
+
+        return view('schools_create', compact('title'));
     }
 
     /**
@@ -34,7 +41,11 @@ class SchoolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        School::create([
+            'nama_sekolah' => $request->nama_sekolah
+        ]);
+
+        return redirect(route('schools.index'));
     }
 
     /**
@@ -56,7 +67,11 @@ class SchoolController extends Controller
      */
     public function edit($id)
     {
-        //
+        $title = 'school';
+
+        $school = School::findOrFail($id);
+
+        return view('schools_edit', compact('title', 'school'));
     }
 
     /**
@@ -68,7 +83,13 @@ class SchoolController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $school = School::findOrFail($id);
+
+        $school->update([
+            'nama_sekolah' => $request->nama_sekolah,
+        ]);
+
+        return redirect(route('schools.index'));
     }
 
     /**
@@ -79,6 +100,24 @@ class SchoolController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $school = School::findOrFail($id);
+        $school->delete();
+
+        return redirect(route('schools.index'));
+    }
+
+    public function destroyMany(Request $request)
+    {
+        foreach ($request->message as $area)
+        {
+            $school = School::findOrFail($area['school_id']);
+            $school->delete();
+        }
+
+        $response = array(
+            'status' => 'success'
+        );
+
+        return response()->json($response);
     }
 }

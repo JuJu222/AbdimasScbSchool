@@ -5,6 +5,7 @@ use App\Http\Controllers\CurrativeMaintenanceController;
 use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\PreventiveMaintenanceController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SchoolController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,6 +54,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('projects', ProjectController::class, ['only' => ['index', 'store', 'create']]);
 
+    Route::resource('schools', SchoolController::class, ['only' => ['index', 'store', 'create']]);
+
     Route::get('pemeliharaan/create/{school_id}/{year_plan}/{equipment_id}', [PreventiveMaintenanceController::class, 'createWithData'])->name('pemeliharaan.createWithData');
     Route::get('pemeliharaan/lapor/{id}', [PreventiveMaintenanceController::class, 'lapor'])->name('pemeliharaan.lapor');
     Route::post('pemeliharaan/laporStore/{id}', [PreventiveMaintenanceController::class, 'laporStore'])->name('pemeliharaan.laporStore');
@@ -73,6 +76,9 @@ Route::middleware(['auth'])->group(function () {
 
         Route::post('projects/deleteMany', [ProjectController::class, 'destroyMany'])->name('projects.deleteMany');
         Route::resource('projects', ProjectController::class, ['except' => ['index', 'store', 'create']]);
+
+        Route::post('schools/deleteMany', [SchoolController::class, 'destroyMany'])->name('schools.deleteMany');
+        Route::resource('schools', SchoolController::class, ['except' => ['index', 'store', 'create']]);
 
         Route::post('pemeliharaan/deleteMany', [PreventiveMaintenanceController::class, 'destroyMany'])->name('pemeliharaan.deleteMany');
         Route::resource('pemeliharaan', PreventiveMaintenanceController::class, ['except' => ['index', 'store']]);

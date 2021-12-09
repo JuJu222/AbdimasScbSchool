@@ -10,7 +10,7 @@
 </style>
 
     <div class="container mt-5">
-        <h1><b>Equipments</b></h1>
+        <h1><b>Schools</b></h1>
     </div>
 
     <div class="container mt-3">
@@ -37,23 +37,23 @@
             <thead>
             <tr>
                 <th data-field="state" data-checkbox="true"></th>
-                <th data-field="equipment_id" data-visible="false">equipment_id</th>
-                <th data-field="nama_equipment" data-sortable="true">Nama Equipment</th>
+                <th data-field="school_id" data-visible="false">school_id</th>
+                <th data-field="nama_sekolah" data-sortable="true">Nama Sekolah</th>
                 @if (auth()->user()->role == 'admin')
                     <th data-field="actions">Actions</th>
                 @endif
             </tr>
             </thead>
             <tbody>
-            @foreach ($equipments as $item)
+            @foreach ($schools as $item)
                 <tr>
                     <td></td>
-                    <td>{{ $item->equipment_id }}</td>
-                    <td>{{ $item->nama_equipment }}</td>
+                    <td>{{ $item->school_id }}</td>
+                    <td>{{ $item->nama_sekolah }}</td>
                     @if (auth()->user()->role == 'admin')
                         <td>
-                            <a href="{{ route('equipments.edit', $item->equipment_id) }}" class="btn btn-warning">Edit</a>
-                            <form class="d-inline" action="{{ route('equipments.destroy', $item->equipment_id) }}" method="POST">
+                            <a href="{{ route('schools.edit', $item->school_id) }}" class="btn btn-warning">Edit</a>
+                            <form class="d-inline" action="{{ route('schools.destroy', $item->school_id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>
@@ -64,7 +64,7 @@
             @endforeach
             </tbody>
         </table>
-        <a href="{{ route('equipments.create') }}" class="btn btn-primary mt-3 mb-5">Add Equipment</a>
+        <a href="{{ route('schools.create') }}" class="btn btn-primary mt-3 mb-5">Add School</a>
     </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" ></script>
@@ -92,11 +92,11 @@
 
         $.ajax({
             type: 'post',
-            url: 'projects/deleteMany',
+            url: 'schools/deleteMany',
             dataType: 'json',
             data: {message:ids},
             success: function (data) {
-                location.href = '/projects'
+                location.href = '/schools'
             }
         });
 
