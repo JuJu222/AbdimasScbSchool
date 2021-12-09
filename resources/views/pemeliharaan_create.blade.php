@@ -31,6 +31,18 @@
                 </select>
             </div>
             <div class="form-group">
+                <label class="mt-3"><h4><b>Tahun</b></h4></label>
+                <select name="year" class="form-select" id="year">
+                    @for ($i = 2020; $i < 2030; $i++)
+                        @if ($i == $year)
+                            <option value="{{ $i }}" selected>{{ $i }}</option>
+                        @else
+                            <option value="{{ $i }}">{{ $i }}</option>
+                        @endif
+                    @endfor
+                </select>
+            </div>
+            <div class="form-group">
                 <label class="mt-3"><h4><b>Nama Equipment</b></h4></label>
                 <select name="equipment_id" class="form-select" id="equipment_id">
                     @foreach($equipments as $item)
@@ -49,18 +61,6 @@
             <div class="form-group">
                 <label class="mt-3"><h4><b>Biaya</b></h4></label>
                 <input type="text" name="biaya" class="form-control">
-            </div>
-            <div class="form-group">
-                <label class="mt-3"><h4><b>Tahun</b></h4></label>
-                <select name="year" class="form-select" id="year">
-                    @for ($i = 2020; $i < 2030; $i++)
-                        @if ($i == $year)
-                            <option value="{{ $i }}" selected>{{ $i }}</option>
-                        @else
-                            <option value="{{ $i }}">{{ $i }}</option>
-                        @endif
-                    @endfor
-                </select>
             </div>
             <div class="form-group">
                 <label class="mt-3"><h4><b>Bulan</b></h4></label>
