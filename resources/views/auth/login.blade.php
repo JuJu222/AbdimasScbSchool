@@ -119,7 +119,7 @@
                             @csrf
                             <div class="form-input">
                                 <span><i class="bi bi-envelope"></i></span>
-                                <input id="email" placeholder="Email Address" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" tabindex="10" required autocomplete="email" autofocus>
+                                <input id="email" placeholder="Email Address" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  required autocomplete="email" autofocus>
 
                                 @error('email')
                                 <div class="invalid-feedback" role="alert">

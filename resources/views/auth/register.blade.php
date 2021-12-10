@@ -131,7 +131,7 @@
 
                             <div class="form-input">
                                 <span><i class="bi bi-envelope"></i></span>
-                                <input id="email" placeholder="Email Address" type="email" tabindex="10" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="email" placeholder="Email Address" type="email"  class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
                                 <div class="invalid-feedback" role="alert">
@@ -162,7 +162,12 @@
                                 </button>
                             </div>
 
-
+                            <div class="text-center mb-2">
+                                Sudah punya akun?
+                                <a href="/login" class="register-link">
+                                    Login Disini!
+                                </a>
+                            </div>
                         </form>
                     </div>
                 </div>
