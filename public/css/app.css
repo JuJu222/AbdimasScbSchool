@@ -3,3 +3,7 @@ body::before{
     content: '';
     height: 60px;
 }
+
+.main_content {
+    min-height: 800px;
+}
