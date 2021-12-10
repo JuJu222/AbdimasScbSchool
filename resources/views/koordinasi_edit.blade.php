@@ -51,7 +51,7 @@
                         <a target="_blank" rel="noopener noreferrer" href="{{ asset('img/uploads/' . $coordination->image_path) }}">Image Link</a>
                     </div>
                 @endif
-                <input class="form-control mt-3" type="file" name="image">
+                <input class="form-control" type="file" name="image">
             </div>
             <button type="submit" class="btn btn-primary mt-3 mb-5">Submit</button>
         </form>

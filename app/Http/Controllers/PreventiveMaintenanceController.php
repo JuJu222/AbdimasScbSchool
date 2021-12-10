@@ -167,7 +167,7 @@ class PreventiveMaintenanceController extends Controller
                 'week_plan' => $request->week_plan,
                 'year_real' => $request->year_real,
                 'month_real' => $request->month_real,
-                'week_real' => $request->week_real,
+                'date_real' => $request->date_real,
                 'status' => $request->status,
                 'keterangan' => $request->keterangan,
                 'image_path' => $name
@@ -183,7 +183,7 @@ class PreventiveMaintenanceController extends Controller
                 'week_plan' => $request->week_plan,
                 'year_real' => $request->year_real,
                 'month_real' => $request->month_real,
-                'week_real' => $request->week_real,
+                'date_real' => $request->date_real,
                 'status' => $request->status,
                 'keterangan' => $request->keterangan
             ]);
@@ -231,7 +231,7 @@ class PreventiveMaintenanceController extends Controller
             $preventiveMaintenance->update([
                 'year_real' => $request->year_real,
                 'month_real' => $request->month_real,
-                'week_real' => $request->week_real,
+                'date_real' => $request->date_real,
                 'status' => $request->status,
                 'keterangan' => $request->keterangan,
                 'image_path' => $name
@@ -240,7 +240,7 @@ class PreventiveMaintenanceController extends Controller
             $preventiveMaintenance->update([
                 'year_real' => $request->year_real,
                 'month_real' => $request->month_real,
-                'week_real' => $request->week_real,
+                'date_real' => $request->date_real,
                 'status' => $request->status,
                 'keterangan' => $request->keterangan
             ]);

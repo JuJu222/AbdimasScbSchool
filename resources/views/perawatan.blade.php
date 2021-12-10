@@ -52,7 +52,7 @@
                 <th data-field="status" data-filter-control="select" data-sortable="true">Status</th>
                 <th data-field="year_real" data-filter-control="select" data-sortable="true">Tahun Realisasi</th>
                 <th data-field="month_real" data-filter-control="select" data-sortable="true">Bulan Realisasi</th>
-                <th data-field="week_real" data-filter-control="select" data-sortable="true">Minggu Realisasi</th>
+                <th data-field="date_real" data-filter-control="select" data-sortable="true">Tanggal Realisasi</th>
                 <th data-field="keterangan">Keterangan</th>
                 <th data-field="image">Image</th>
                 <th data-field="actions">Actions</th>
@@ -125,7 +125,7 @@
                             Desember
                         @endif
                     </td>
-                    <td>{{ $item->week_real }}</td>
+                    <td>{{ $item->date_real }}</td>
                     <td>{{ $item->keterangan }}</td>
                     @if ($item->image_path)
                         <td><a target="_blank" rel="noopener noreferrer" href="{{ asset('img/uploads/' . $item->image_path) }}">Link</a></td>

@@ -124,13 +124,9 @@
                 </select>
             </div>
             <div class="form-group">
-                <label class="mt-3"><h4><b>Minggu Realisasi</b></h4></label>
-                <select name="week_real" class="form-select">
-                    <option value="" selected></option>
-                    @for ($i = 1; $i <= 4; $i++)
-                        <option value="{{ $i }}">{{ $i }}</option>
-                    @endfor
-                </select>
+                <label><h4 class="mt-3"><b>Tanggal Realisasi</b></h4></label>
+                <div class="mb-2"><mark>Contoh: 12/31/2021</mark></div>
+                <input type="date" name="date_real" class="form-control">
             </div>
             <div class="form-group">
                 <label class="mt-3"><h4><b>Keterangan</b></h4></label>

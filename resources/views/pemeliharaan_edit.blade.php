@@ -210,17 +210,9 @@
                 </select>
             </div>
             <div class="form-group">
-                <label class="mt-3"><h4><b>Minggu Realisasi</b></h4></label>
-                <select name="week_real" class="form-select">
-                    <option value="" selected></option>
-                    @for ($i = 1; $i <= 4; $i++)
-                        @if ($i == $preventiveMaintenance->week_real)
-                            <option value="{{ $i }}" selected>{{ $i }}</option>
-                        @else
-                            <option value="{{ $i }}">{{ $i }}</option>
-                        @endif
-                    @endfor
-                </select>
+                <label><h4 class="mt-3"><b>Tanggal Realisasi</b></h4></label>
+                <div class="mb-2"><mark>Contoh: 12/31/2021</mark></div>
+                <input type="date" name="date_real" class="form-control" value="{{ $preventiveMaintenance->date_real }}">
             </div>
             <div class="form-group">
                 <label class="mt-3"><h4><b>Status</b></h4></label>
@@ -248,7 +240,7 @@
                         <a target="_blank" rel="noopener noreferrer" href="{{ asset('img/uploads/' . $preventiveMaintenance->image_path) }}">Image Link</a>
                     </div>
                 @endif
-                <input class="form-control mt-3" type="file" name="image">
+                <input class="form-control" type="file" name="image">
             </div>
             <button type="submit" class="btn btn-primary mt-3 mb-5">Submit</button>
         </form>

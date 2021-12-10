@@ -24,7 +24,7 @@ class CreateCurrativeMaintenancesTable extends Migration
             $table->tinyInteger('week_plan');
             $table->integer('year_real')->nullable();;
             $table->tinyInteger('month_real')->nullable();;
-            $table->tinyInteger('week_real')->nullable();;
+            $table->date('date_real')->nullable();
             $table->string('status');
             $table->string('keterangan')->nullable();
             $table->string('image_path')->nullable();
