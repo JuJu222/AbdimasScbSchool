@@ -31,6 +31,14 @@
                 <label class="mt-3"><h4><b>Link Zoom</b></h4></label>
                 <input type="text" name="link_zoom" class="form-control">
             </div>
+            <div class="form-group">
+                <label class="mt-3"><h4><b>Meeting ID</b></h4></label>
+                <input type="text" name="meeting_id" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="mt-3"><h4><b>Meeting Passcode</b></h4></label>
+                <input type="text" name="meeting_passcode" class="form-control">
+            </div>
             <button type="submit" class="btn btn-primary mt-3 mb-3">Submit</button>
         </form>
         @if ($errors->any())

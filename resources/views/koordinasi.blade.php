@@ -35,6 +35,8 @@
                 <th data-field="date_time" data-sortable="true">Date Time</th>
                 <th data-field="tema_koordinasi" data-filter-control="select" data-sortable="true">Tema Koordinasi</th>
                 <th data-field="link_zoom">Link Zoom</th>
+                <th data-field="meeting_id">Meeting ID</th>
+                <th data-field="meeting_passcode">Meeting Passcode</th>
                 <th data-field="keterangan">Keterangan</th>
                 <th data-field="image">Image</th>
                 <th data-field="actions">Actions</th>
@@ -48,6 +50,8 @@
                     <td>{{ $item->date_time }}</td>
                     <td>{{ $item->tema_koordinasi }}</td>
                     <td><a target="_blank" rel="noopener noreferrer" href="{{ $item->link_zoom }}">{{ $item->link_zoom }}</a></td>
+                    <td>{{ $item->meeting_id }}</td>
+                    <td>{{ $item->meeting_passcode }}</td>
                     <td>{{ $item->keterangan }}</td>
                     @if ($item->image_path)
                         <td><a target="_blank" rel="noopener noreferrer" href="{{ asset('img/uploads/' . $item->image_path) }}">Link</a></td>

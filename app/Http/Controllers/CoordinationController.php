@@ -46,6 +46,8 @@ class CoordinationController extends Controller
         Coordination::create([
             'date_time' => $request->date_time,
             'tema_koordinasi' => $request->tema_koordinasi,
+            'meeting_id' => $request->meeting_id,
+            'meeting_passcode' => $request->meeting_passcode,
             'link_zoom' => $request->link_zoom,
         ]);
 
@@ -151,6 +153,8 @@ class CoordinationController extends Controller
             $coordination->update([
                 'date_time' => $request->date_time,
                 'tema_koordinasi' => $request->tema_koordinasi,
+                'meeting_id' => $request->meeting_id,
+                'meeting_passcode' => $request->meeting_passcode,
                 'link_zoom' => $request->link_zoom,
                 'keterangan' => $request->keterangan,
                 'image_path' => $name
@@ -159,6 +163,8 @@ class CoordinationController extends Controller
             $coordination->update([
                 'date_time' => $request->date_time,
                 'tema_koordinasi' => $request->tema_koordinasi,
+                'meeting_id' => $request->meeting_id,
+                'meeting_passcode' => $request->meeting_passcode,
                 'link_zoom' => $request->link_zoom,
                 'keterangan' => $request->keterangan,
             ]);

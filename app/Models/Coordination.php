@@ -10,5 +10,5 @@ class Coordination extends Model
     use HasFactory;
 
     protected $primaryKey = 'coordination_id';
-    protected $fillable = ['date_time', 'tema_koordinasi', 'link_zoom', 'keterangan', 'image_path'];
+    protected $fillable = ['date_time', 'tema_koordinasi', 'meeting_id', 'meeting_passcode', 'link_zoom', 'keterangan', 'image_path'];
 }

@@ -21,6 +21,7 @@
             <input type="hidden" name="_method" value="PATCH">
             <div class="form-group">
                 <label><h4><b>Tanggal & Jam</b></h4></label>
+                <div class="mb-2"><mark>Contoh: 12/31/2021, 02:00 PM</mark></div>
                 <input type="datetime-local" name="date_time" class="form-control" value="{{ $coordination->date_time }}">
             </div>
             <div class="form-group">
@@ -30,6 +31,14 @@
             <div class="form-group">
                 <label class="mt-3"><h4><b>Link Zoom</b></h4></label>
                 <input type="text" name="link_zoom" class="form-control" value="{{ $coordination->link_zoom }}">
+            </div>
+            <div class="form-group">
+                <label class="mt-3"><h4><b>Meeting ID</b></h4></label>
+                <input type="text" name="meeting_id" class="form-control" value="{{ $coordination->meeting_id }}">
+            </div>
+            <div class="form-group">
+                <label class="mt-3"><h4><b>Meeting Passcode</b></h4></label>
+                <input type="text" name="meeting_passcode" class="form-control" value="{{ $coordination->meeting_passcode }}">
             </div>
             <div class="form-group">
                 <label class="mt-3"><h4><b>Keterangan</b></h4></label>
