@@ -83,12 +83,15 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('projects', ProjectController::class, ['except' => ['index', 'store', 'create']]);
 
         Route::post('pemeliharaan/deleteMany', [PreventiveMaintenanceController::class, 'destroyMany'])->name('pemeliharaan.deleteMany');
+        Route::post('pemeliharaan/destroyImage/{id}', [PreventiveMaintenanceController::class, 'destroyImage'])->name('pemeliharaan.destroyImage');
         Route::resource('pemeliharaan', PreventiveMaintenanceController::class, ['except' => ['index', 'store']]);
 
         Route::post('perawatan/deleteMany', [CurrativeMaintenanceController::class, 'destroyMany'])->name('perawatan.deleteMany');
+        Route::post('perawatan/destroyImage/{id}', [CurrativeMaintenanceController::class, 'destroyImage'])->name('perawatan.destroyImage');
         Route::resource('perawatan', CurrativeMaintenanceController::class, ['except' => ['index', 'store']]);
 
         Route::post('koordinasi/deleteMany', [CoordinationController::class, 'destroyMany'])->name('koordinasi.deleteMany');
+        Route::post('koordinasi/destroyImage/{id}', [CoordinationController::class, 'destroyImage'])->name('koordinasi.destroyImage');
         Route::resource('koordinasi', CoordinationController::class, ['except' => ['index', 'store', 'create']]);
     });
 });

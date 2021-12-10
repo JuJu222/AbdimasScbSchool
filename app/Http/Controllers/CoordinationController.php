@@ -205,4 +205,16 @@ class CoordinationController extends Controller
 
         return response()->json($response);
     }
+
+    public function destroyImage($id)
+    {
+        $coordination = Coordination::findOrFail($id);
+
+        File::delete(public_path('/img/uploads') . '/' . $coordination->image_path);
+        $coordination->update([
+            'image_path' => null
+        ]);
+
+        return redirect(route('koordinasi.edit', $id));
+    }
 }

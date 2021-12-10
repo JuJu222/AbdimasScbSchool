@@ -281,4 +281,16 @@ class CurrativeMaintenanceController extends Controller
 
         return response()->json($response);
     }
+
+    public function destroyImage($id)
+    {
+        $currativeMaintenance = CurrativeMaintenance::findOrFail($id);
+
+        File::delete(public_path('/img/uploads') . '/' . $currativeMaintenance->image_path);
+        $currativeMaintenance->update([
+            'image_path' => null
+        ]);
+
+        return redirect(route('perawatan.edit', $id));
+    }
 }

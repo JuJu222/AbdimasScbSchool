@@ -242,7 +242,15 @@
                 @endif
                 <input class="form-control" type="file" name="image">
             </div>
-            <button type="submit" class="btn btn-primary mt-3 mb-5">Submit</button>
+            <button type="submit" class="btn btn-primary mt-3 mb-2">Submit</button>
+        </form>
+        <form action="{{ route('perawatan.destroyImage', $currativeMaintenance->currative_maintenance_id) }}" method="POST">
+            @csrf
+            @if ($currativeMaintenance->image_path)
+                <button type="submit" class="btn btn-danger mb-5">Delete Image</button>
+            @else
+                <button type="submit" class="btn btn-danger mb-5" disabled>Delete Image</button>
+            @endif
         </form>
     </div>
     @if ($errors->any())

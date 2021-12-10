@@ -281,4 +281,22 @@ class PreventiveMaintenanceController extends Controller
 
         return response()->json($response);
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyImage($id)
+    {
+        $preventiveMaintenance = PreventiveMaintenance::findOrFail($id);
+
+        File::delete(public_path('/img/uploads') . '/' . $preventiveMaintenance->image_path);
+        $preventiveMaintenance->update([
+            'image_path' => null
+        ]);
+
+        return redirect(route('pemeliharaan.edit', $id));
+    }
 }
