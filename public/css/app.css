@@ -7,3 +7,12 @@ body::before{
 .main_content {
     min-height: 800px;
 }
+
+.col-keterangan {
+    min-width: 450px;
+    white-space: pre-line;
+}
+
+.col-actions {
+    min-width: 220px;
+}

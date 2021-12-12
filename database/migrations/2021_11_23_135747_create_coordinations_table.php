@@ -20,7 +20,7 @@ class CreateCoordinationsTable extends Migration
             $table->string('meeting_id')->nullable();;
             $table->string('meeting_passcode')->nullable();;
             $table->string('link_zoom')->nullable();;
-            $table->string('keterangan')->nullable();;
+            $table->text('keterangan')->nullable();;
             $table->string('image_path')->nullable();
             $table->timestamps();
         });

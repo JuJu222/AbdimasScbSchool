@@ -52,13 +52,17 @@
                     <td><a target="_blank" rel="noopener noreferrer" href="{{ $item->link_zoom }}">{{ $item->link_zoom }}</a></td>
                     <td>{{ $item->meeting_id }}</td>
                     <td>{{ $item->meeting_passcode }}</td>
-                    <td>{{ $item->keterangan }}</td>
+                    <td class="col-keterangan"  >{{ $item->keterangan }}</td>
                     @if ($item->image_path)
                         <td><a target="_blank" rel="noopener noreferrer" href="{{ asset('img/uploads/' . $item->image_path) }}">Link</a></td>
                     @else
                         <td></td>
                     @endif
-                    <td>
+                    @if (auth()->user()->role == 'admin')
+                        <td class="col-actions">
+                    @else
+                        <td>
+                    @endif
                         <a href="{{ route('koordinasi.lapor', $item->coordination_id) }}" class="btn btn-primary">Lapor</a>
                         @if (auth()->user()->role == 'admin')
                             <a href="{{ route('koordinasi.edit', $item->coordination_id) }}" class="btn btn-warning">Edit</a>

@@ -130,7 +130,7 @@
             </div>
             <div class="form-group">
                 <label class="mt-3"><h4><b>Keterangan</b></h4></label>
-                <input type="text" name="keterangan" class="form-control">
+                <textarea name="keterangan" class="form-control"></textarea>
             </div>
             <div class="form-group">
                 <label class="mt-3"><h4><b>Status</b></h4></label>

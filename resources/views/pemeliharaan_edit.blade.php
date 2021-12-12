@@ -231,7 +231,7 @@
             </div>
             <div class="form-group">
                 <label class="mt-3"><h4><b>Keterangan</b></h4></label>
-                <input type="text" name="keterangan" class="form-control" value="{{ $preventiveMaintenance->keterangan }}">
+                <textarea name="keterangan" class="form-control">{{ $preventiveMaintenance->keterangan }}</textarea>
             </div>
             <div class="form-group">
                 <label class="mt-3"><h4><b>Image</b></h4></label>

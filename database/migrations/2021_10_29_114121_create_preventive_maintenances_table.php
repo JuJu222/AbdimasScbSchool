@@ -26,7 +26,7 @@ class CreatePreventiveMaintenancesTable extends Migration
             $table->tinyInteger('month_real')->nullable();;
             $table->date('date_real')->nullable();
             $table->string('status');
-            $table->string('keterangan')->nullable();
+            $table->text('keterangan')->nullable();
             $table->string('image_path')->nullable();
             $table->timestamps();
 

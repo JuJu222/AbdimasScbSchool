@@ -126,13 +126,17 @@
                         @endif
                     </td>
                     <td>{{ $item->date_real }}</td>
-                    <td>{{ $item->keterangan }}</td>
+                    <td class="col-keterangan">{{ $item->keterangan }}</td>
                     @if ($item->image_path)
                         <td><a target="_blank" rel="noopener noreferrer" href="{{ asset('img/uploads/' . $item->image_path) }}">Link</a></td>
                     @else
                         <td></td>
                     @endif
-                    <td>
+                    @if (auth()->user()->role == 'admin')
+                        <td class="col-actions">
+                    @else
+                        <td>
+                    @endif
                         <a href="{{ route('pemeliharaan.lapor', $item->preventive_maintenance_id) }}" class="btn btn-primary">Lapor</a>
                         @if (auth()->user()->role == 'admin')
                             <a href="{{ route('pemeliharaan.edit', $item->preventive_maintenance_id) }}" class="btn btn-warning">Edit</a>
