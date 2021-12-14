@@ -33,31 +33,30 @@
                 <a class="nav-link
                 @if ($title =='list_video') active @endif" href="/video">Video</a>
             </li>
+              @auth()
+                  @if (auth()->user()->role == 'admin')
+                      <li class="nav-item col-6 col-md-auto">
+                          <a class="nav-link
+                     @if ($title =='sekolah') active @endif" href="/schools">Schools</a>
+                      </li>
+                      <li class="nav-item col-6 col-md-auto">
+                          <a class="nav-link
+                     @if ($title =='user') active @endif" href="/users">Users</a>
+                      </li>
+                  @endif
+              @endauth
           </ul>
         </div>
-        
-        <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
-            @auth()
-                @if (auth()->user()->role == 'admin')
-                    <li class="nav-item col-6 col-md-auto">
-                        <a class="nav-link
-                     @if ($title =='sekolah') active @endif" href="/schools">Schools</a>
-                    </li>
-                    <li class="nav-item col-6 col-md-auto">
-                        <a class="nav-link
-                     @if ($title =='user') active @endif" href="/users">Users</a>
-                    </li>
-                @endif
-            @endauth
 
+        <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
             @guest()
                 <li class="nav-item col-6 col-md-auto">
                     <a class="btn btn-warning text fw-bold" href="/login">LOGIN</a>
                 </li>
 
-                
+
                     <a class="btn btn-danger d-lg-inline-block my-2 my-md-0 ms-md-1" href="/register">REGISTER</a>
-                
+
             @endguest
             @auth()
                 <span class="navbar-text fw-bold mx-4">Welcome, {{ auth()->user()->name }}</span>
