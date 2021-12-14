@@ -5,7 +5,9 @@
         {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button> --}}
-        <ul class="nav navbar-nav nav-pills navbar-right text-light ">
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav text-light ">
             <li class="nav-item">
                 <a class="nav-link
                 @if ($title =='home') active @endif" href="/">Home</a>
@@ -13,32 +15,35 @@
 
             <li class="nav-item">
                 <a class="nav-link
-              @if ($title =='pemeliharaan') active @endif" href="/pemeliharaan">Pemeliharaan</a>
+              @if ($title =='maintenance') active @endif" href="/pemeliharaan">Pemeliharaan</a>
             </li>
 
 
             <li class="nav-item">
                 <a class="nav-link
-              @if ($title =='perawatan') active @endif" href="/perawatan">Perawatan</a>
+              @if ($title =='currative_maintenance') active @endif" href="/perawatan">Perawatan</a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link
-              @if ($title =='jadwal_koordinasi') active @endif" href="/koordinasi">Jadwal Koordinasi</a>
+              @if ($title =='koordinasi') active @endif" href="/koordinasi">Jadwal Koordinasi</a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link
                 @if ($title =='list_video') active @endif" href="/video">Video</a>
             </li>
-
+          </ul>
+        </div>
+        
+        <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
             @auth()
                 @if (auth()->user()->role == 'admin')
-                    <li class="nav-item">
+                    <li class="nav-item col-6 col-md-auto">
                         <a class="nav-link
                      @if ($title =='sekolah') active @endif" href="/schools">Schools</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item col-6 col-md-auto">
                         <a class="nav-link
                      @if ($title =='user') active @endif" href="/users">Users</a>
                     </li>
@@ -46,16 +51,16 @@
             @endauth
 
             @guest()
-                <li class="nav-item">
+                <li class="nav-item col-6 col-md-auto">
                     <a class="btn btn-warning text fw-bold" href="/login">LOGIN</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="btn btn-danger" href="/register">REGISTER</a>
-                </li>
+                
+                    <a class="btn btn-danger d-lg-inline-block my-2 my-md-0 ms-md-1" href="/register">REGISTER</a>
+                
             @endguest
             @auth()
-                <span class="navbar-text mx-4">Welcome, {{ auth()->user()->name }}</span>
+                <span class="navbar-text fw-bold mx-4">Welcome, {{ auth()->user()->name }}</span>
                 <li class="nav-item">
                     <a class="btn btn-danger" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
