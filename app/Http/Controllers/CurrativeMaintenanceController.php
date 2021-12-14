@@ -17,7 +17,7 @@ class CurrativeMaintenanceController extends Controller
      */
     public function index()
     {
-        $title = 'maintenance';
+        $title = 'currative_maintenance';
 
         $currativeMaintenances = CurrativeMaintenance::orderBy('school_id')
             ->orderBy('project_id')

@@ -15,18 +15,18 @@
 
             <li class="nav-item">
                 <a class="nav-link
-              @if ($title =='pemeliharaan') active @endif" href="/pemeliharaan">Pemeliharaan</a>
+              @if ($title =='maintenance') active @endif" href="/pemeliharaan">Pemeliharaan</a>
             </li>
 
 
             <li class="nav-item">
                 <a class="nav-link
-              @if ($title =='perawatan') active @endif" href="/perawatan">Perawatan</a>
+              @if ($title =='currative_maintenance') active @endif" href="/perawatan">Perawatan</a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link
-              @if ($title =='jadwal_koordinasi') active @endif" href="/koordinasi">Jadwal Koordinasi</a>
+              @if ($title =='koordinasi') active @endif" href="/koordinasi">Jadwal Koordinasi</a>
             </li>
 
             <li class="nav-item">
@@ -60,7 +60,7 @@
                 
             @endguest
             @auth()
-                <span class="navbar-text mx-4">Welcome, {{ auth()->user()->name }}</span>
+                <span class="navbar-text fw-bold mx-4">Welcome, {{ auth()->user()->name }}</span>
                 <li class="nav-item">
                     <a class="btn btn-danger" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
