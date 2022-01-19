@@ -54,9 +54,9 @@
             </div>
             <div class="form-group">
                 <label class="mt-3"><h4><b>Image</b></h4></label>
-                <input class="form-control" type="file" name="image">
+                <input class="form-control" type="file" name="image" required>
             </div>
-            <button type="submit" class="btn btn-primary mt-3 mb-3">Submit</button>
+            <button type="submit" class="btn btn-primary mt-3 mb-5">Submit</button>
         </form>
         @if ($errors->any())
             <div class="alert alert-danger mt-3">
