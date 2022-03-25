@@ -53,6 +53,10 @@
                 <textarea name="keterangan" class="form-control"></textarea>
             </div>
             <div class="form-group">
+                <label class="mt-3"><h4><b>Link Dokumen</b></h4></label>
+                <input type="text" name="link_dokumen" class="form-control">
+            </div>
+            <div class="form-group">
                 <label class="mt-3"><h4><b>Image</b></h4></label>
                 <input class="form-control" type="file" name="image" required>
             </div>

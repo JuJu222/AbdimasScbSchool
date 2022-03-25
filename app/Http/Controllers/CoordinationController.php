@@ -92,11 +92,13 @@ class CoordinationController extends Controller
 
             $coordination->update([
                 'keterangan' => $request->keterangan,
+                'link_dokumen' => $request->link_dokumen,
                 'image_path' => $name
             ]);
         } else {
             $coordination->update([
-                'keterangan' => $request->keterangan
+                'keterangan' => $request->keterangan,
+                'link_dokumen' => $request->link_dokumen,
             ]);
         }
 
@@ -157,6 +159,7 @@ class CoordinationController extends Controller
                 'meeting_passcode' => $request->meeting_passcode,
                 'link_zoom' => $request->link_zoom,
                 'keterangan' => $request->keterangan,
+                'link_dokumen' => $request->link_dokumen,
                 'image_path' => $name
             ]);
         } else {
@@ -167,6 +170,7 @@ class CoordinationController extends Controller
                 'meeting_passcode' => $request->meeting_passcode,
                 'link_zoom' => $request->link_zoom,
                 'keterangan' => $request->keterangan,
+                'link_dokumen' => $request->link_dokumen,
             ]);
         }
 

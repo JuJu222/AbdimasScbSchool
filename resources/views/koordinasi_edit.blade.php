@@ -45,6 +45,10 @@
                 <textarea name="keterangan" class="form-control">{{ $coordination->keterangan }}</textarea>
             </div>
             <div class="form-group">
+                <label class="mt-3"><h4><b>Link Dokumen</b></h4></label>
+                <input type="text" name="link_dokumen" class="form-control" value="{{ $coordination->link_dokumen }}">
+            </div>
+            <div class="form-group">
                 <label class="mt-3"><h4><b>Image</b></h4></label>
                 @if ($coordination->image_path)
                     <div>

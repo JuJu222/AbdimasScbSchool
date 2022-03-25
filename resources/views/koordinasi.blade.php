@@ -38,6 +38,7 @@
                 <th data-field="meeting_id">Meeting ID</th>
                 <th data-field="meeting_passcode">Meeting Passcode</th>
                 <th data-field="keterangan">Keterangan</th>
+                <th data-field="link_dokumen">Link Dokumen</th>
                 <th data-field="image">Image</th>
                 <th data-field="actions">Actions</th>
             </tr>
@@ -53,7 +54,8 @@
                     <td>{{ $item->meeting_id }}</td>
                     <td>{{ $item->meeting_passcode }}</td>
                     <td class="col-keterangan"  >{{ $item->keterangan }}</td>
-                    @if ($item->image_path)
+                    <td><a target="_blank" rel="noopener noreferrer" href="{{ $item->link_dokumen }}">{{ $item->link_dokumen }}</a></td>
+                   @if ($item->image_path)
                         <td><a target="_blank" rel="noopener noreferrer" href="{{ asset('img/uploads/' . $item->image_path) }}">Link</a></td>
                     @else
                         <td></td>
